@@ -22,3 +22,4 @@ DirectoryIndex index.php index.html
     php_flag display_errors On
     php_value error_reporting E_ALL
 </IfModule>
+/* docathome seq: 1 */
