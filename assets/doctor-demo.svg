@@ -16,3 +16,4 @@
     <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
   </circle>
 </svg>
+/* docathome seq: 2 */
