@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Consultation - DocAtHome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
     <style>
         * {
             margin: 0;
@@ -90,7 +90,7 @@
             0% { left: -100%; }
             100% { left: 200%; }
         }
-        .progress-bar-container {
+        .[REDACTED] {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -376,11 +376,11 @@
 </head>
 <body>
     <div class="container my-5">
-        <div class="row justify-content-center">
+        <div class="row [REDACTED]>
             <div class="col-lg-8 col-md-10">
                 <div class="booking-card">
                     <div class="card-header bg-primary text-white">
-                        <div class="d-flex justify-content-between align-items-center p-3">
+                        <div class="d-flex [REDACTED] align-items-center p-3">
                             <div>
                                 <h3 class="mb-0"><i class="bi bi-calendar-heart"></i> Book Your Consultation</h3>
                                 <small style="opacity: 0.9;">Fill in your details to get started</small>
@@ -389,7 +389,7 @@
                                 <i class="bi bi-house-door-fill"></i> Home
                             </a>
                         </div>
-                        <div class="progress-bar-container">
+                        <div class=[REDACTED]>
                             <div class="progress-bar-fill" id="progressBar"></div>
                         </div>
                     </div>
@@ -403,7 +403,7 @@
                                             <span class="required-star">*</span>
                                         </label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
-                                        <i class="bi bi-check-circle-fill input-icon valid" id="nameIcon"></i>
+                                        <i class="bi [REDACTED] input-icon valid" id="nameIcon"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -412,8 +412,8 @@
                                             <i class="bi bi-envelope-fill"></i> Email Address
                                             <span class="required-star">*</span>
                                         </label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required>
-                                        <i class="bi bi-check-circle-fill input-icon valid" id="emailIcon"></i>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="[REDACTED]" required>
+                                        <i class="bi [REDACTED] input-icon valid" id="emailIcon"></i>
                                     </div>
                                 </div>
                             </div>
@@ -425,13 +425,13 @@
                                             <span class="required-star">*</span>
                                         </label>
                                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
-                                        <i class="bi bi-check-circle-fill input-icon valid" id="phoneIcon"></i>
+                                        <i class="bi [REDACTED] input-icon valid" id="phoneIcon"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-wrapper">
                                         <label for="doctor" class="form-label">
-                                            <i class="bi bi-person-badge-fill"></i> Select Doctor
+                                            <i class="bi [REDACTED]></i> Select Doctor
                                         </label>
                                         <?php
                                         $selected_doctor = isset($_GET['doctor']) ? $_GET['doctor'] : '';
@@ -451,7 +451,7 @@
 
                             <div class="mb-4">
                                 <label class="form-label d-block mb-3">
-                                    <i class="bi bi-chat-square-heart-fill"></i> Consultation Type
+                                    <i class="bi [REDACTED]></i> Consultation Type
                                     <span class="required-star">*</span>
                                 </label>
                                 <div class="row g-3">
@@ -470,7 +470,7 @@
                                     <div class="col-md-6">
                                         <input type="radio" name="type" id="type_video" value="video" class="consult-type-input" required>
                                         <label for="type_video" class="consult-type-label">
-                                            <div class="consult-type-icon"><i class="bi bi-camera-video-fill"></i></div>
+                                            <div class="consult-type-icon"><i class="bi [REDACTED]></i></div>
                                             <h6>Video Consultation</h6>
                                             <span class="price-tag">₹150</span>
                                             <div class="tooltip-info" style="margin-top: 8px;">
@@ -557,11 +557,11 @@
                     this.classList.remove('invalid');
                     this.classList.add('valid');
                     nameIcon.classList.remove('bi-x-circle-fill', 'invalid');
-                    nameIcon.classList.add('bi-check-circle-fill', 'valid', 'show');
+                    nameIcon.classList.add([REDACTED], 'valid', 'show');
                 } else {
                     this.classList.remove('valid');
                     this.classList.add('invalid');
-                    nameIcon.classList.remove('bi-check-circle-fill', 'valid');
+                    nameIcon.classList.remove([REDACTED], 'valid');
                     nameIcon.classList.add('bi-x-circle-fill', 'invalid', 'show');
                 }
             } else {
@@ -577,11 +577,11 @@
                     this.classList.remove('invalid');
                     this.classList.add('valid');
                     emailIcon.classList.remove('bi-x-circle-fill', 'invalid');
-                    emailIcon.classList.add('bi-check-circle-fill', 'valid', 'show');
+                    emailIcon.classList.add([REDACTED], 'valid', 'show');
                 } else {
                     this.classList.remove('valid');
                     this.classList.add('invalid');
-                    emailIcon.classList.remove('bi-check-circle-fill', 'valid');
+                    emailIcon.classList.remove([REDACTED], 'valid');
                     emailIcon.classList.add('bi-x-circle-fill', 'invalid', 'show');
                 }
             } else {
@@ -597,11 +597,11 @@
                     this.classList.remove('invalid');
                     this.classList.add('valid');
                     phoneIcon.classList.remove('bi-x-circle-fill', 'invalid');
-                    phoneIcon.classList.add('bi-check-circle-fill', 'valid', 'show');
+                    phoneIcon.classList.add([REDACTED], 'valid', 'show');
                 } else {
                     this.classList.remove('valid');
                     this.classList.add('invalid');
-                    phoneIcon.classList.remove('bi-check-circle-fill', 'valid');
+                    phoneIcon.classList.remove([REDACTED], 'valid');
                     phoneIcon.classList.add('bi-x-circle-fill', 'invalid', 'show');
                 }
             } else {
@@ -731,3 +731,4 @@
     </script>
 </body>
 </html>
+/* docathome seq: 8 */
