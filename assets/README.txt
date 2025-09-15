@@ -6,3 +6,4 @@ To create your own placeholder videos:
 3. Keep the file sizes small (under 5MB) for better performance
 
 If no video files are present, the system will show colored placeholders instead.
+/* docathome seq: 6 */
