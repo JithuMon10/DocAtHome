@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-function ensure_bookings_table(mysqli $conn): void {
+function [REDACTED](mysqli $conn): void {
     $conn->query("CREATE TABLE IF NOT EXISTS bookings (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(150) NOT NULL,
@@ -19,7 +19,7 @@ function ensure_bookings_table(mysqli $conn): void {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 }
 
-ensure_bookings_table($conn);
+[REDACTED]($conn);
 
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
@@ -62,3 +62,4 @@ if ($type === 'chat') {
 }
 exit;
 ?>
+/* docathome seq: 9 */
