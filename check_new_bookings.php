@@ -17,3 +17,4 @@ $newCount = $data ? (int)$data['new_count'] : 0;
 
 echo json_encode(['new_count' => $newCount]);
 ?>
+/* docathome seq: 12 */
