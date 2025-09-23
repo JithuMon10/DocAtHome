@@ -28,3 +28,4 @@ try {
     die('Database connection error: ' . $e->getMessage());
 }
 ?>
+/* docathome seq: 13 */
