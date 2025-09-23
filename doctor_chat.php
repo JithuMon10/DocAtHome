@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doctor Chat - DocAtHome</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
   <style>
     :root {
         --doctor-primary: #20bf6b;
-        --doctor-primary-gradient: linear-gradient(135deg, #20bf6b 0%, #01a3a4 100%);
+        [REDACTED]: linear-gradient(135deg, #20bf6b 0%, #01a3a4 100%);
         --doctor-bg: #0093E9;
         --doctor-bubble-bg: #d4f4dd;
     }
@@ -37,7 +37,7 @@
         overflow: hidden;
     }
     .chat-header {
-      background: var(--doctor-primary-gradient);
+      background: var([REDACTED]);
       color: white;
       padding: 20px 25px;
       font-weight: 700;
@@ -55,10 +55,10 @@
     #messages::-webkit-scrollbar {
       width: 8px;
     }
-    #messages::-webkit-scrollbar-track {
+    #messages::[REDACTED] {
       background: #f1f1f1;
     }
-    #messages::-webkit-scrollbar-thumb {
+    #messages::[REDACTED] {
       background: #c1c1c1;
       border-radius: 10px;
     }
@@ -107,7 +107,7 @@
         color: rgba(255,255,255,0.8);
         text-align: right;
     }
-    .chat-input-container {
+    .[REDACTED] {
       padding: 20px 25px;
       background: white;
       border-top: 2px solid #f0f0f0;
@@ -130,7 +130,7 @@
         width: 55px;
         height: 55px;
         border-radius: 50%;
-        background: var(--doctor-primary-gradient);
+        background: var([REDACTED]);
         color: white;
         border: none;
         font-size: 1.6rem;
@@ -188,7 +188,7 @@
       const bid = <?php echo $bookingId; ?>;
       const message = document.getElementById('input').value.trim();
       if(!message){return;}
-      fetch('send_message.php', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'booking_id='+encodeURIComponent(bid)+'&sender=doctor&message='+encodeURIComponent(message) })
+      fetch('send_message.php', { method:'POST', headers:{'Content-Type':'application/[REDACTED]}, body:'booking_id='+encodeURIComponent(bid)+'&sender=doctor&message='+encodeURIComponent(message) })
         .then(r=>r.json())
         .then(()=>{ document.getElementById('input').value=''; fetchMessages(); });
     }
@@ -206,13 +206,13 @@
 <body>
 <div class="chat-container" style="margin: 10px auto;">
   <div class="chat-header">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex [REDACTED] align-items-center">
         <span>Doctor Chat - Booking #<?php echo htmlspecialchars((string)$bookingId); ?></span>
         <a class="btn btn-light btn-sm" href="doctor_dashboard.php">← Dashboard</a>
     </div>
   </div>
   <div id="messages"></div>
-  <div class="chat-input-container">
+  <div class=[REDACTED]>
     <div class="d-flex gap-3">
       <input id="input" type="text" class="form-control" placeholder="Type your message...">
       <button class="send-btn" onclick="sendMessage()"><i class="bi bi-send-fill"></i></button>
@@ -221,3 +221,5 @@
 </div>
 </body>
 </html>
+
+/* docathome seq: 15 */
