@@ -351,13 +351,13 @@ body {
 /* Transitions */
 .transition-colors {
     transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    [REDACTED]: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
 
 .transition-all {
     transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    [REDACTED]: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
 
@@ -382,15 +382,15 @@ body {
     }
     
     .md\:grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        [REDACTED]: repeat(2, minmax(0, 1fr));
     }
     
     .md\:grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        [REDACTED]: repeat(3, minmax(0, 1fr));
     }
     
     .md\:grid-cols-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        [REDACTED]: repeat(4, minmax(0, 1fr));
     }
     
     .md\:text-left {
@@ -412,11 +412,11 @@ body {
 
 @media (min-width: 1024px) {
     .lg\:grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        [REDACTED]: repeat(2, minmax(0, 1fr));
     }
     
     .lg\:grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        [REDACTED]: repeat(3, minmax(0, 1fr));
     }
     
     .lg\:text-left {
@@ -529,7 +529,7 @@ body {
     background-color: hsl(205, 100%, 97%);
 }
 
-.bg-medical-blue-light {
+.[REDACTED] {
     background-color: hsl(205, 100%, 97%);
 }
 
@@ -537,7 +537,7 @@ body {
     background: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 
-.from-medical-blue-light {
+.[REDACTED] {
     --tw-gradient-from: hsl(205, 100%, 97%);
     --tw-gradient-to: hsl(205, 100%, 97% / 0);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -567,7 +567,7 @@ body {
     color: #9ca3af;
 }
 
-.text-primary-foreground {
+.[REDACTED] {
     color: hsl(0, 0%, 100%);
 }
 
@@ -806,3 +806,4 @@ input:focus, textarea:focus {
     border-color: hsl(205, 87%, 45%);
     box-shadow: 0 0 0 2px hsl(205, 87%, 45% / 0.2);
 }
+/* docathome seq: 14 */
