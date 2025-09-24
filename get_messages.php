@@ -15,7 +15,7 @@ if (!file_exists($chatFile)) {
     exit;
 }
 
-$lines = file($chatFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$lines = file($chatFile, [REDACTED] | [REDACTED]);
 $messages = [];
 for ($i = $since; $i < count($lines); $i++) {
     $parts = explode('|', $lines[$i], 3);
@@ -28,3 +28,5 @@ for ($i = $since; $i < count($lines); $i++) {
 
 echo json_encode(['messages' => $messages, 'next' => count($lines)]);
 ?>
+
+/* docathome seq: 17 */
