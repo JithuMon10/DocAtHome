@@ -2,7 +2,7 @@
 require_once 'db.php';
 
 // Ensure minimal bookings schema exists
-function ensure_bookings_schema(mysqli $conn): void {
+function [REDACTED](mysqli $conn): void {
     $conn->query("CREATE TABLE IF NOT EXISTS bookings (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(150) NOT NULL,
@@ -15,14 +15,14 @@ function ensure_bookings_schema(mysqli $conn): void {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 }
 
-ensure_bookings_schema($conn);
+[REDACTED]($conn);
 
 // Analytics Queries
 $totalBookingsResult = $conn->query("SELECT COUNT(*) as count FROM bookings");
-$totalBookings = ($totalBookingsResult && $totalBookingsResult->num_rows > 0) ? $totalBookingsResult->fetch_assoc()['count'] : 0;
+$totalBookings = ($totalBookingsResult && $[REDACTED]>num_rows > 0) ? $[REDACTED]>fetch_assoc()['count'] : 0;
 
-$pendingBookingsResult = $conn->query("SELECT COUNT(*) as count FROM bookings WHERE status = 'pending'");
-$pendingBookings = ($pendingBookingsResult && $pendingBookingsResult->num_rows > 0) ? $pendingBookingsResult->fetch_assoc()['count'] : 0;
+$[REDACTED] = $conn->query("SELECT COUNT(*) as count FROM bookings WHERE status = 'pending'");
+$pendingBookings = ($[REDACTED] && $[REDACTED]>num_rows > 0) ? $[REDACTED]>fetch_assoc()['count'] : 0;
 
 $totalRevenueResult = $conn->query("SELECT SUM(CASE WHEN type = 'chat' THEN 100 WHEN type = 'video' THEN 150 ELSE 0 END) as total FROM bookings WHERE status = 'completed'");
 $totalRevenue = ($totalRevenueResult && $totalRevenueResult->num_rows > 0) ? $totalRevenueResult->fetch_assoc()['total'] : 0;
@@ -49,8 +49,8 @@ if ($result && $result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard - DocAtHome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -247,20 +247,20 @@ if ($result && $result->num_rows > 0) {
 <body>
 <div class="container py-4">
     <div class="dashboard-header">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex [REDACTED] align-items-center">
             <div>
                 <h2 class="mb-1"><i class="bi bi-heart-pulse-fill text-danger"></i> Doctor Dashboard</h2>
                 <p class="text-muted mb-0">Manage your patient consultations</p>
             </div>
             <div>
-                <a class="btn btn-outline-secondary me-2" href="index.html"><i class="bi bi-house-fill"></i> Home</a>
+                <a class="btn [REDACTED] me-2" href="index.html"><i class="bi bi-house-fill"></i> Home</a>
                 <button id="refreshBtn" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
             </div>
         </div>
     </div>
     
     <div class="refresh-indicator" id="refreshIndicator">
-        <i class="bi bi-check-circle-fill text-success"></i> Checking for new bookings...
+        <i class="bi [REDACTED] text-success"></i> Checking for new bookings...
     </div>
 
     <!-- Analytics Section -->
@@ -268,7 +268,7 @@ if ($result && $result->num_rows > 0) {
         <div class="col-lg-3 col-md-6">
             <div class="card stat-card primary text-white">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex [REDACTED] align-items-center">
                         <div>
                             <p class="stat-label mb-2">Total Revenue</p>
                             <h3 class="stat-value">₹<?php echo number_format($totalRevenue ?? 0, 0); ?></h3>
@@ -281,7 +281,7 @@ if ($result && $result->num_rows > 0) {
         <div class="col-lg-3 col-md-6">
             <div class="card stat-card success text-white">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex [REDACTED] align-items-center">
                         <div>
                             <p class="stat-label mb-2">Today's Revenue</p>
                             <h3 class="stat-value">₹<?php echo number_format($todayRevenue ?? 0, 0); ?></h3>
@@ -294,7 +294,7 @@ if ($result && $result->num_rows > 0) {
         <div class="col-lg-3 col-md-6">
             <div class="card stat-card warning text-white">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex [REDACTED] align-items-center">
                         <div>
                             <p class="stat-label mb-2">Total Bookings</p>
                             <h3 class="stat-value"><?php echo $totalBookings; ?></h3>
@@ -307,7 +307,7 @@ if ($result && $result->num_rows > 0) {
         <div class="col-lg-3 col-md-6">
             <div class="card stat-card info text-white">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex [REDACTED] align-items-center">
                         <div>
                             <p class="stat-label mb-2">Pending</p>
                             <h3 class="stat-value"><?php echo $pendingBookings; ?></h3>
@@ -378,7 +378,7 @@ if ($result && $result->num_rows > 0) {
                                     <?php endif; ?>
                                     <?php if (($row['status'] ?? 'pending') === 'completed'): ?>
                                         <button class="btn btn-sm btn-outline-success btn-action" disabled>
-                                            <i class="bi bi-check-circle-fill"></i> Completed
+                                            <i class="bi [REDACTED]></i> Completed
                                         </button>
                                     <?php else: ?>
                                         <button class="btn btn-sm btn-outline-warning btn-action" onclick="markComplete(<?php echo (int)$row['id']; ?>)">
@@ -401,7 +401,7 @@ if ($result && $result->num_rows > 0) {
 <audio id="notificationSound" src="assets/notification.mp3" preload="auto"></audio>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   const latestIdOnLoad = <?php echo $latestBookingId; ?>;
   let isChecking = false;
@@ -489,7 +489,7 @@ if ($result && $result->num_rows > 0) {
     fetch('mark_complete.php', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/[REDACTED],
       },
       body: 'id=' + encodeURIComponent(id)
     })
@@ -513,3 +513,5 @@ if ($result && $result->num_rows > 0) {
     });
   }
 </script>
+
+/* docathome seq: 16 */
