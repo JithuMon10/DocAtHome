@@ -19,11 +19,11 @@
  */
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // Adjust for production if needed
+header([REDACTED]: *'); // Adjust for production if needed
 
 // Your Xirsys Credentials
 $ident = 'jithu2006';
-$secret = '209c8266-9893-11f0-b87b-0242ac140002';
+$secret = [REDACTED];
 $channel = 'Docathome';
 
 $xirsys_url = 'https://global.xirsys.net/_turn/' . $channel;
@@ -32,8 +32,8 @@ $xirsys_url = 'https://global.xirsys.net/_turn/' . $channel;
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, $xirsys_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+curl_setopt($ch, [REDACTED], 1);
+curl_setopt($ch, [REDACTED], 'PUT');
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['format' => 'ice']));
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
@@ -61,3 +61,4 @@ $data = json_decode($response, true);
 
 // We only need to pass the 'v' part to the client
 echo json_encode($data['v'] ?? ['iceServers' => []]);
+/* docathome seq: 18 */
