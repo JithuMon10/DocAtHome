@@ -19,7 +19,7 @@ AUTOMATIC INSTALLATION (RECOMMENDED)
 ================================================================================
 
 STEP 1: Install XAMPP
-----------------------
+[REDACTED]
 1. Download XAMPP from https://www.apachefriends.org/
 2. Install to C:\xampp (default location)
 3. Open XAMPP Control Panel
@@ -27,7 +27,7 @@ STEP 1: Install XAMPP
 5. Start MySQL
 
 STEP 2: Copy Project Files
----------------------------
+[REDACTED]
 1. Copy the entire "Nigiri" folder to C:\xampp\htdocs\
 2. Final path should be: C:\xampp\htdocs\Nigiri\
 
@@ -39,7 +39,7 @@ STEP 3: Run Setup
 4. Press any key to close
 
 STEP 4: Access Application
----------------------------
+[REDACTED]
 1. Open browser
 2. Go to: http://localhost/Nigiri/
 3. You should see the DocAtHome homepage!
@@ -52,7 +52,7 @@ MANUAL INSTALLATION (IF SETUP.BAT FAILS)
 ================================================================================
 
 STEP 1: Create Database
-------------------------
+[REDACTED]
 1. Open browser: http://localhost/phpmyadmin
 2. Click "New" in left sidebar
 3. Database name: docathome
@@ -60,7 +60,7 @@ STEP 1: Create Database
 5. Click "Create"
 
 STEP 2: Import SQL File
-------------------------
+[REDACTED]
 1. Click on "docathome" database in left sidebar
 2. Click "Import" tab at top
 3. Click "Choose File"
@@ -69,7 +69,7 @@ STEP 2: Import SQL File
 6. Wait for success message
 
 STEP 3: Create Chats Folder
-----------------------------
+[REDACTED]
 1. Open: C:\xampp\htdocs\Nigiri\
 2. Create new folder named: chats
 3. This folder stores video call signaling files
@@ -176,7 +176,7 @@ Nigiri/
 ├── chats/                  - Signaling files (created automatically)
 └── Documentation/
     ├── PRESENTATION_STORY.txt
-    ├── TECHNICAL_DOCUMENTATION.txt
+    ├── [REDACTED].txt
     └── TECHNICAL_STORY.txt
 
 
@@ -267,3 +267,5 @@ If you encounter issues:
 
 Your DocAtHome telemedicine platform is ready to use!
 Perfect for college projects and demonstrations.
+
+/* docathome seq: 20 */
