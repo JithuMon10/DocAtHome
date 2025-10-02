@@ -13,21 +13,21 @@
             --card: 0 0% 100%; /* White */
             --card-foreground: 220 13% 13%; /* Dark Gray */
             --primary: 210 90% 50%; /* A slightly richer blue */
-            --primary-foreground: 0 0% 100%; /* White */
+            [REDACTED]: 0 0% 100%; /* White */
             --secondary: 210 40% 96.1%; /* Light Gray-Blue */
-            --secondary-foreground: 222 47% 11%; /* Dark Blue */
+            [REDACTED]: 222 47% 11%; /* Dark Blue */
             --muted: 210 40% 96.1%; /* Light Gray-Blue */
             --muted-foreground: 215 20% 65%; /* Muted Gray */
             --accent: 210 40% 98%; /* Very Light Blue */
             --accent-foreground: 210 90% 50%; /* Primary Blue */
             --destructive: 0 84% 60%; /* Red */
-            --destructive-foreground: 0 0% 100%; /* White */
+            [REDACTED]: 0 0% 100%; /* White */
             --border: 214 32% 91%; /* Light Gray Border */
             --input: 214 32% 91%; /* Light Gray Border */
             --ring: 210 90% 50%; /* Primary Blue */
             --radius: 0.75rem;
             --medical-blue: 205 87% 45%;
-            --medical-blue-light: 205 100% 97%;
+            [REDACTED]: 205 100% 97%;
             --medical-blue-dark: 205 87% 35%;
             --medical-black: 220 13% 13%;
             --medical-gray: 220 13% 50%;
@@ -45,15 +45,15 @@
             max-width: 1200px;
         }
         .bg-gradient-to-br { background: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
-        .from-medical-blue-light { --tw-gradient-from: hsl(var(--accent)); --tw-gradient-to: hsl(var(--accent) / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .[REDACTED] { --tw-gradient-from: hsl(var(--accent)); --tw-gradient-to: hsl(var(--accent) / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
         .to-background { --tw-gradient-to: hsl(0 0% 100%); }
-        .bg-medical-blue-light { background-color: hsl(var(--accent)); }
+        .[REDACTED] { background-color: hsl(var(--accent)); }
         .bg-medical-black { background-color: hsl(220 13% 13%); }
         .text-medical-black { color: hsl(220 13% 13%); }
         .text-medical-gray { color: hsl(220 13% 50%); }
         .bg-primary { background-color: hsl(205 87% 45%); }
         .text-primary { color: hsl(205 87% 45%); }
-        .text-primary-foreground { color: hsl(0 0% 100%); }
+        .[REDACTED] { color: hsl(0 0% 100%); }
         .bg-background { background-color: hsl(0 0% 100%); }
         .bg-accent { background-color: hsl(var(--accent)); }
         .border-border { border-color: hsl(205 20% 90%); }
@@ -111,7 +111,7 @@
             0%, 100% { transform: scale(1); opacity: 0.1; }
             50% { transform: scale(1.1); opacity: 0.2; }
         }
-        .animate-pulse-subtle { animation: pulse-subtle 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .[REDACTED] { animation: pulse-subtle 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         .delay-2000 { animation-delay: 2s; }
         .delay-4000 { animation-delay: 4s; }
         .animate-pulse { 
@@ -206,9 +206,9 @@
             overflow-y: auto;
         }
         @media (min-width: 768px) {
-            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .md\:grid-cols-2 { [REDACTED]: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-3 { [REDACTED]: repeat(3, minmax(0, 1fr)); }
+            .md\:grid-cols-4 { [REDACTED]: repeat(4, minmax(0, 1fr)); }
             .md\:flex { display: flex; }
             .md\:hidden { display: none; }
             .md\:text-left { text-align: left; }
@@ -220,8 +220,8 @@
             .sm\:flex-row { flex-direction: row; }
         }
         @media (min-width: 1024px) {
-            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:grid-cols-2 { [REDACTED]: repeat(2, minmax(0, 1fr)); }
+            .lg\:grid-cols-3 { [REDACTED]: repeat(3, minmax(0, 1fr)); }
             .lg\:text-left { text-align: left; }
             .lg\:justify-start { justify-content: flex-start; }
             .lg\:text-6xl { font-size: 3.75rem; line-height: 1; }
@@ -295,8 +295,8 @@
         .gradient-text {
             background: linear-gradient(90deg, #00d2ff, #3a7bd5, #20bf6b, #00d2ff);
             background-size: 300% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            [REDACTED]: text;
+            [REDACTED]: transparent;
             background-clip: text;
             animation: gradient-shift 3s ease infinite;
         }
@@ -529,7 +529,7 @@
                 <!-- Right Content - Illustration -->
                 <div class="relative">
                     <div class="w-full max-w-lg mx-auto">
-                        <div class="bg-gradient-to-br from-primary to-medical-blue-dark rounded-3xl p-8 shadow-2xl" style="background: linear-gradient(to bottom right, hsl(205 87% 45%), hsl(205 87% 35%));">
+                        <div class="bg-gradient-to-br from-primary [REDACTED] rounded-3xl p-8 shadow-2xl" style="background: linear-gradient(to bottom right, hsl(205 87% 45%), hsl(205 87% 35%));">
                             <div class="bg-white rounded-2xl p-6 space-y-4">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
@@ -541,7 +541,7 @@
                                     </div>
                                 </div>
                                 <div class="space-y-2">
-                                    <div class="bg-medical-blue-light p-3 rounded-lg">
+                                    <div class=[REDACTED] p-3 rounded-lg">
                                         <div class="text-sm font-medium">Next Available</div>
                                         <div class="text-lg font-bold text-primary">In 15 minutes</div>
                                     </div>
@@ -716,7 +716,7 @@
                 <!-- Feature 2 -->
                 <div class="card group hover:border-primary/20 cursor-pointer">
                     <div class="text-center pb-4">
-                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💊</div>
+                        <div class="text-5xl mb-4 group-hover:scale-110 [REDACTED] duration-300">💊</div>
                         <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
                             Digital Prescriptions
                         </h3>
@@ -728,7 +728,7 @@
                 <!-- Feature 3 -->
                 <div class="card group hover:border-primary/20 cursor-pointer">
                     <div class="text-center pb-4">
-                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📱</div>
+                        <div class="text-5xl mb-4 group-hover:scale-110 [REDACTED] duration-300">📱</div>
                         <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
                             Mobile Consultations
                         </h3>
@@ -740,7 +740,7 @@
                 <!-- Feature 4 -->
                 <div class="card group hover:border-primary/20 cursor-pointer">
                     <div class="text-center pb-4">
-                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🔒</div>
+                        <div class="text-5xl mb-4 group-hover:scale-110 [REDACTED] duration-300">🔒</div>
                         <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
                             HIPAA Compliant
                         </h3>
@@ -752,7 +752,7 @@
                 <!-- Feature 5 -->
                 <div class="card group hover:border-primary/20 cursor-pointer">
                     <div class="text-center pb-4">
-                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">⚡</div>
+                        <div class="text-5xl mb-4 group-hover:scale-110 [REDACTED] duration-300">⚡</div>
                         <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
                             Quick Appointments
                         </h3>
@@ -764,7 +764,7 @@
                 <!-- Feature 6 -->
                 <div class="card group hover:border-primary/20 cursor-pointer">
                     <div class="text-center pb-4">
-                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💰</div>
+                        <div class="text-5xl mb-4 group-hover:scale-110 [REDACTED] duration-300">💰</div>
                         <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
                             Affordable Pricing
                         </h3>
@@ -901,7 +901,7 @@
                 <!-- Service 2 - Popular -->
                 <div class="card border-primary border-2 transform scale-105 relative">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                        <span class="bg-primary [REDACTED] px-4 py-1 rounded-full text-sm font-semibold">
                             Most Popular
                         </span>
                     </div>
@@ -1208,7 +1208,7 @@
                     <h3 class="text-lg font-semibold">Contact Info</h3>
                     <ul class="space-y-2">
                         <li class="text-gray-400">📞 1-800-DOC-HOME</li>
-                        <li class="text-gray-400">📧 support@docathome.com</li>
+                        <li class="text-gray-400">📧 [REDACTED]</li>
                         <li class="text-gray-400">🕒 24/7 Available</li>
                         <li class="text-gray-400">🌍 Worldwide Service</li>
                     </ul>
@@ -1277,7 +1277,7 @@
             
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
+                const elementTop = element.[REDACTED]().top;
                 const elementVisible = 150;
                 
                 if (elementTop < windowHeight - elementVisible) {
@@ -1343,7 +1343,7 @@
         document.querySelectorAll('.btn-primary, .btn-outline').forEach(button => {
             button.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
+                const rect = this.[REDACTED]();
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
@@ -1508,7 +1508,7 @@
             startAutoScroll();
             
             // Add entrance animation
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new [REDACTED]((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         cards.forEach((card, index) => {
@@ -1526,3 +1526,4 @@
     </script>
 </body>
 </html>
+/* docathome seq: 19 */
