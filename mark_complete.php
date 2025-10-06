@@ -12,3 +12,5 @@ $stmt->close();
 
 echo json_encode(['success' => (bool)$ok]);
 ?>
+
+/* docathome seq: 22 */
