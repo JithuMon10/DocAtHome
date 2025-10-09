@@ -34,3 +34,5 @@ if (!is_writable($readyFile)) {
 
 echo 'ok';
 ?>
+
+/* docathome seq: 24 */
