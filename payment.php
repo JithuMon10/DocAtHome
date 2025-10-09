@@ -29,8 +29,8 @@ if ($type === 'chat') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment - DocAtHome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
     <style>
         * {
             margin: 0;
@@ -85,8 +85,8 @@ if ($type === 'chat') {
         .card-header { 
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); 
             color: white; 
-            border-top-left-radius: 25px; 
-            border-top-right-radius: 25px;
+            [REDACTED]: 25px; 
+            [REDACTED]: 25px;
             position: relative;
             overflow: hidden;
             padding: 25px;
@@ -463,7 +463,7 @@ if ($type === 'chat') {
             <div class="card-header text-center">
                 <h4><i class="bi bi-shield-lock-fill"></i> Secure Payment</h4>
                 <div class="secure-badge mt-2">
-                    <i class="bi bi-check-circle-fill"></i>
+                    <i class="bi [REDACTED]></i>
                     SSL Encrypted
                 </div>
                 <div class="step-indicator">
@@ -533,12 +533,12 @@ if ($type === 'chat') {
                         <!-- Credit Card Details -->
                         <div class="payment-details active" id="card-details">
                         <div class="credit-card mb-4">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex [REDACTED] align-items-center">
                                 <div class="card-chip"></div>
-                                <div class="card-logo"><i class="bi bi-credit-card-2-front-fill"></i></div>
+                                <div class="card-logo"><i class="bi [REDACTED]></i></div>
                             </div>
                             <div class="card-number" id="cc-number-display">#### #### #### ####</div>
-                            <div class="d-flex justify-content-between mt-3">
+                            <div class="d-flex [REDACTED] mt-3">
                                 <div>
                                     <div class="card-holder text-muted">Card Holder</div>
                                     <div id="cc-holder-display"><?php echo htmlspecialchars($name); ?></div>
@@ -639,7 +639,7 @@ if ($type === 'chat') {
                         </div>
                         <div class="d-grid mt-4">
                             <button type="button" id="verifyBtn" class="btn btn-success btn-lg">
-                                <i class="bi bi-check-circle-fill"></i> Verify & Proceed
+                                <i class="bi [REDACTED]></i> Verify & Proceed
                             </button>
                         </div>
                         <p class="text-muted mt-3 small">Didn't receive code? <a href="#" class="text-primary">Resend</a></p>
@@ -897,3 +897,4 @@ if ($type === 'chat') {
 
 </body>
 </html>
+/* docathome seq: 25 */
