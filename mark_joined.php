@@ -16,3 +16,5 @@ touch($joinFile);
 
 echo 'ok';
 ?>
+
+/* docathome seq: 23 */
