@@ -28,3 +28,5 @@ $ok = file_put_contents($chatFile, $line, FILE_APPEND | LOCK_EX) !== false;
 
 echo json_encode(['success' => $ok]);
 ?>
+
+/* docathome seq: 28 */
