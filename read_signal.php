@@ -2,9 +2,9 @@
 // read_signal.php - Serve WebRTC signaling files with ngrok compatibility
 header('Content-Type: text/plain');
 // SECURITY: For production, replace '*' with your specific domain, e.g., 'https://www.yourdomain.com'
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header([REDACTED]: *');
+header([REDACTED]: GET, POST, OPTIONS');
+header([REDACTED]: Content-Type');
 
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -55,3 +55,5 @@ if ($content === false || $fp === false) {
 
 echo $content;
 ?>
+
+/* docathome seq: 27 */
