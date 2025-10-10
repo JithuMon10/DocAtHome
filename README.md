@@ -8,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/WebRTC-RealTime-FF6F00?style=for-the-badge&logo=webrtc&logoColor=white" />
+  <img src="https://img.shields.io/badge/[REDACTED]?style=for-the-badge&logo=webrtc&logoColor=white" />
 </p>
 
 ---
@@ -65,3 +65,5 @@
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=JithuMon10&label=PROJECT%20VIEWS&color=00FFCC&style=flat" alt="Views" />
 </p>
+
+/* docathome seq: 26 */
