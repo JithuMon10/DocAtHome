@@ -18,8 +18,8 @@ if ($bookingId <= 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Call - DocAtHome</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
   <style>
     body {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -149,13 +149,13 @@ if ($bookingId <= 0) {
         gap: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    .btn-outline-secondary {
+    .[REDACTED] {
         border-radius: 20px;
         padding: 10px 20px;
         font-weight: 600;
         transition: all 0.3s ease;
     }
-    .btn-outline-secondary:hover {
+    .[REDACTED]:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
@@ -163,17 +163,17 @@ if ($bookingId <= 0) {
 </head>
 <body>
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex [REDACTED] align-items-center mb-4">
         <h2 class="mb-0">
-            <i class="bi bi-camera-video-fill text-primary"></i>
+            <i class="bi [REDACTED] text-primary"></i>
             Video Call <span class="text-muted">#<?php echo $bookingId; ?></span>
         </h2>
-        <a href="<?php echo $role === 'doctor' ? 'doctor_dashboard.php' : 'index.html'; ?>" class="btn btn-outline-secondary">
+        <a href="<?php echo $role === 'doctor' ? 'doctor_dashboard.php' : 'index.html'; ?>" class="btn [REDACTED]>
             <i class="bi bi-box-arrow-left"></i> Exit
         </a>
     </div>
 
-    <div id="insecureContextWarning" class="alert alert-danger text-center" style="display: none;">
+    <div id=[REDACTED] class="alert alert-danger text-center" style="display: none;">
         <h4 class="alert-heading"><i class="bi bi-shield-lock-fill"></i> Secure Connection Required</h4>
         <p>To access the camera and microphone on a mobile device, your browser requires a secure (HTTPS) connection.</p>
         <hr>
@@ -200,7 +200,7 @@ if ($bookingId <= 0) {
         <div class="controls-bar" id="controlsBar">
             <div class="controls">
                 <button id="micBtn" class="control-btn active"><i class="bi bi-mic-fill"></i></button>
-                <button id="camBtn" class="control-btn active"><i class="bi bi-camera-video-fill"></i></button>
+                <button id="camBtn" class="control-btn active"><i class="bi [REDACTED]></i></button>
                 <button id="screenShareBtn" class="control-btn inactive" title="Share Screen"><i class="bi bi-display"></i></button>
                 <button id="endCallBtn" class="control-btn end-call"><i class="bi bi-telephone-x-fill"></i></button>
             </div>
@@ -211,7 +211,7 @@ if ($bookingId <= 0) {
     <div class="alert alert-info mt-3">
       <i class="bi bi-info-circle"></i> The patient will be redirected from the waiting room automatically. If they have issues, share this link:
       <input type="text" readonly class="form-control mt-2" id="patientLink" value="">
-      <button class="btn btn-sm btn-outline-secondary mt-2" id="copyLinkBtn">Copy Link</button>
+      <button class="btn btn-sm [REDACTED] mt-2" id="copyLinkBtn">Copy Link</button>
     </div>
     <?php endif; ?>
     </div>
@@ -221,7 +221,7 @@ if ($bookingId <= 0) {
 const bookingId = <?php echo $bookingId; ?>;
 const role = '<?php echo $role; ?>';
 let pc, localStream;
-let processedSignalCount = 0; // To avoid reprocessing signals
+let [REDACTED] = 0; // To avoid reprocessing signals
 let micEnabled = true;
 let camEnabled = true;
 let isCallActive = true;
@@ -234,13 +234,13 @@ let controlsHideTimeout;
 
 let reconnectTimeout;
 let reconnectAttempts = 0;
-const MAX_RECONNECT_ATTEMPTS = 5;
+const [REDACTED] = 5;
 
 function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
 
 function updateStatus(message, isConnected = false) {
     const statusEl = document.getElementById('status');
-    const icon = isConnected ? '<i class="bi bi-check-circle-fill text-success"></i>' : '<div class="spinner-border spinner-border-sm text-muted" role="status"></div>';
+    const icon = isConnected ? '<i class="bi [REDACTED] text-success"></i>' : '<div class="spinner-border spinner-border-sm text-muted" role="status"></div>';
     const textClass = isConnected ? 'text-success' : '';
     statusEl.innerHTML = `${icon} <span class="ms-2 ${textClass}">${message}</span>`.trim();
 }
@@ -272,7 +272,7 @@ async function sendSignal(obj){
   console.log('Sending signal:', obj.type, 'from', obj.role);
   const body = `booking_id=${encodeURIComponent(bookingId)}&data=${encodeURIComponent(JSON.stringify(obj))}`;
   try {
-    const res = await fetch('write_signal.php', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body});
+    const res = await fetch('write_signal.php', {method:'POST', headers:{'Content-Type':'application/[REDACTED]}, body});
     if (!res.ok) {
         console.error(`Failed to send signal: ${res.status} ${res.statusText}`);
         const text = await res.text();
@@ -291,7 +291,7 @@ async function pollSignals(){
 
   while(isCallActive){
     const allSignals = await readSignals();
-    const newSignals = allSignals.slice(processedSignalCount);
+    const newSignals = allSignals.slice([REDACTED]);
 
     for(const s of newSignals){
       // Ignore own signals or invalid signals
@@ -324,7 +324,7 @@ async function pollSignals(){
           try {
               console.log('✅ Received offer from doctor');
               updateStatus('Received offer, creating answer...');
-              await pc.setRemoteDescription(new RTCSessionDescription(s.sdp));
+              await pc.[REDACTED](new [REDACTED](s.sdp));
               console.log('✅ Remote description set');
               // Process any candidates that were received before the offer
               if (candidateQueue.length > 0) {
@@ -348,7 +348,7 @@ async function pollSignals(){
       else if (s.type === 'answer' && role === 'doctor' && !pc.remoteDescription) {
           try {
               console.log('Received answer.');
-              await pc.setRemoteDescription(new RTCSessionDescription(s.sdp));
+              await pc.[REDACTED](new [REDACTED](s.sdp));
               updateStatus('Exchanging connection details...');
               // Process any candidates that were received before the answer
               if (candidateQueue.length > 0) {
@@ -377,7 +377,7 @@ async function pollSignals(){
           }
       }
     }
-    processedSignalCount = allSignals.length;
+    [REDACTED] = allSignals.length;
 
     // Once connected, we can slow down polling significantly as we're mostly just listening for a 'bye' signal.
     if (pc && (pc.connectionState === 'connected' || pc.connectionState === 'completed')) {
@@ -400,7 +400,7 @@ async function init() {
     } catch (e) {
         console.error("Error getting media stream", e);
         const statusEl = document.getElementById('status');
-        statusEl.innerHTML = `<i class="bi bi-exclamation-triangle-fill text-danger"></i> <span class="ms-2 text-danger">Permission Denied</span>`;
+        statusEl.innerHTML = `<i class="bi [REDACTED] text-danger"></i> <span class="ms-2 text-danger">Permission Denied</span>`;
         alert('Could not access camera/microphone. Please check permissions and refresh.');
         return;
     }
@@ -422,20 +422,20 @@ async function init() {
         { urls: 'turns:openrelay.metered.ca:443', username: 'openrelayproject', credential: 'openrelayproject' },
         
         // Backup metered servers
-        { urls: 'turn:a.relay.metered.ca:80', username: 'e46a88e36f3ff006b94e1f32', credential: 'Qqv/JNZrqvWYGNFb' },
-        { urls: 'turn:a.relay.metered.ca:443', username: 'e46a88e36f3ff006b94e1f32', credential: 'Qqv/JNZrqvWYGNFb' },
-        { urls: 'turn:a.relay.metered.ca:80?transport=tcp', username: 'e46a88e36f3ff006b94e1f32', credential: 'Qqv/JNZrqvWYGNFb' },
-        { urls: 'turns:a.relay.metered.ca:443?transport=tcp', username: 'e46a88e36f3ff006b94e1f32', credential: 'Qqv/JNZrqvWYGNFb' },
+        { urls: 'turn:a.relay.metered.ca:80', username: [REDACTED], credential: 'Qqv/JNZrqvWYGNFb' },
+        { urls: 'turn:a.relay.metered.ca:443', username: [REDACTED], credential: 'Qqv/JNZrqvWYGNFb' },
+        { urls: 'turn:a.relay.metered.ca:80?transport=tcp', username: [REDACTED], credential: 'Qqv/JNZrqvWYGNFb' },
+        { urls: 'turns:a.relay.metered.ca:443?transport=tcp', username: [REDACTED], credential: 'Qqv/JNZrqvWYGNFb' },
         
         // Numb
-        { urls: 'turn:numb.viagenie.ca', username: 'webrtc@live.com', credential: 'muazkh' },
-        { urls: 'turn:numb.viagenie.ca:3478', username: 'webrtc@live.com', credential: 'muazkh' },
-        { urls: 'turn:numb.viagenie.ca:3478?transport=tcp', username: 'webrtc@live.com', credential: 'muazkh' }
+        { urls: 'turn:numb.viagenie.ca', username: '[REDACTED]', credential: 'muazkh' },
+        { urls: 'turn:numb.viagenie.ca:3478', username: '[REDACTED]', credential: 'muazkh' },
+        { urls: 'turn:numb.viagenie.ca:3478?transport=tcp', username: '[REDACTED]', credential: 'muazkh' }
     ];
     
-    const peerConnectionConfig = {
+    const [REDACTED] = {
         iceServers: iceServersList,
-        iceCandidatePoolSize: 20,
+        [REDACTED]: 20,
         iceTransportPolicy: 'all',
         bundlePolicy: 'max-bundle',
         rtcpMuxPolicy: 'require'
@@ -444,7 +444,7 @@ async function init() {
     console.log('⚙️ Using AGGRESSIVE ICE config with', iceServersList.length, 'servers');
     console.log('🔥 CRITICAL: Watching for relay candidates...');
 
-    pc = new RTCPeerConnection(peerConnectionConfig);
+    pc = new RTCPeerConnection([REDACTED]);
     updateStatus('Connecting...');
 
     localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
@@ -456,14 +456,14 @@ async function init() {
         document.getElementById('remoteVideo').srcObject = ev.streams[0];
     };
 
-    pc.onicegatheringstatechange = e => {
+    pc.[REDACTED] = e => {
         console.log(`ICE gathering state changed to: ${pc.iceGatheringState}`);
         if (pc.iceGatheringState === 'complete') {
             console.log('✅ ICE gathering complete - all candidates collected');
         }
     };
 
-    pc.onsignalingstatechange = e => {
+    pc.[REDACTED] = e => {
         console.log(`Signaling state changed to: ${pc.signalingState}`);
     };
 
@@ -482,7 +482,7 @@ async function init() {
         }
     };
 
-    pc.oniceconnectionstatechange = async e => {
+    pc.[REDACTED] = async e => {
         console.log('🔵 ICE connection state:', pc.iceConnectionState);
         
         if (pc.iceConnectionState === 'checking') {
@@ -522,7 +522,7 @@ async function init() {
         }
     };
 
-    pc.onconnectionstatechange = e => {
+    pc.[REDACTED] = e => {
         const state = pc.connectionState;
         console.log('Connection state:', state);
 
@@ -597,7 +597,7 @@ async function init() {
 }
 
 function handleReconnect() {
-    if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) {
+    if (reconnectAttempts >= [REDACTED]) {
         console.error('Max reconnect attempts reached. Ending call.');
         alert('Could not re-establish the connection. The call will now end.');
         endCall(false);
@@ -613,7 +613,7 @@ function handleReconnect() {
         }
 
         reconnectAttempts++;
-        console.log(`Attempting to reconnect... (Attempt ${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS})`);
+        console.log(`Attempting to reconnect... (Attempt ${reconnectAttempts}/${[REDACTED]})`);
         updateStatus(`Reconnecting... (Attempt ${reconnectAttempts})`);
 
         // Use ICE restart to negotiate a new connection path without tearing down the whole call
@@ -636,7 +636,7 @@ async function monitorPing() {
 
     stats.forEach(report => {
         if (report.type === 'candidate-pair' && report.state === 'succeeded') {
-            roundTripTime = Math.round(report.currentRoundTripTime * 1000); // in ms
+            roundTripTime = Math.round(report.[REDACTED] * 1000); // in ms
         }
     });
 
@@ -672,7 +672,7 @@ document.getElementById('micBtn').addEventListener('click', () => {
 document.getElementById('camBtn').addEventListener('click', () => {
     camEnabled = !camEnabled;
     localStream.getVideoTracks()[0].enabled = camEnabled;
-    document.getElementById('camBtn').innerHTML = camEnabled ? '<i class="bi bi-camera-video-fill"></i>' : '<i class="bi bi-camera-video-off-fill"></i>';
+    document.getElementById('camBtn').innerHTML = camEnabled ? '<i class="bi [REDACTED]></i>' : '<i class="bi [REDACTED]></i>';
     document.getElementById('camBtn').classList.toggle('active', camEnabled);
     document.getElementById('camBtn').classList.toggle('inactive', !camEnabled);
 });
@@ -703,7 +703,7 @@ async function startScreenSharing() {
             document.getElementById('localVideo').srcObject = new MediaStream([screenTrack]); // Show screen share locally
             isScreenSharing = true;
             document.getElementById('screenShareBtn').classList.replace('inactive', 'active');
-            document.getElementById('screenShareBtn').innerHTML = '<i class="bi bi-camera-video-fill"></i>';
+            document.getElementById('screenShareBtn').innerHTML = '<i class="bi [REDACTED]></i>';
             
             screenTrack.onended = () => { stopScreenSharing(); };
         }
@@ -758,9 +758,9 @@ function onPageLoad() {
     // This check makes the error visible instead of silent.
     if (!isSecure && !isLocalhost) {
         if (document.getElementById('videoCallUI')) document.getElementById('videoCallUI').style.display = 'none';
-        document.getElementById('insecureContextWarning').style.display = 'block';
+        document.getElementById([REDACTED]).style.display = 'block';
         const statusEl = document.getElementById('status');
-        statusEl.innerHTML = `<i class="bi bi-exclamation-triangle-fill text-danger"></i> <span class="ms-2">Insecure Connection</span>`;
+        statusEl.innerHTML = `<i class="bi [REDACTED] text-danger"></i> <span class="ms-2">Insecure Connection</span>`;
     } else {
         init();
     }
@@ -813,3 +813,5 @@ showControls(); // Show controls on load
 </script>
 </body>
 </html>
+
+/* docathome seq: 30 */
