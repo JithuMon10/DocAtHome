@@ -13,8 +13,8 @@ if ($bookingId <= 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waiting for Doctor - DocAtHome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[REDACTED]/font/bootstrap-icons.css">
     <style>
         .waiting-container {
             min-height: 100vh;
@@ -102,8 +102,8 @@ if ($bookingId <= 0) {
         .waiting-card h2 {
             font-weight: 700;
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            [REDACTED]: text;
+            [REDACTED]: transparent;
             background-clip: text;
         }
         @keyframes blink {
@@ -167,8 +167,8 @@ if ($bookingId <= 0) {
             font-size: 2.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            [REDACTED]: text;
+            [REDACTED]: transparent;
             background-clip: text;
             margin: 25px 0;
         }
@@ -281,7 +281,7 @@ if ($bookingId <= 0) {
             </div>
             
             <div class="mt-4">
-                <a href="index.html" class="btn btn-outline-secondary btn-custom me-2">
+                <a href="index.html" class="btn [REDACTED] btn-custom me-2">
                     <i class="bi bi-house"></i> Back to Home
                 </a>
                 <button id="refreshBtn" class="btn btn-primary btn-custom">
@@ -386,7 +386,7 @@ if ($bookingId <= 0) {
                 <div class="text-center">
                     <div class="spinner" style="border-color: #ffc107; border-top-color: #ffc107;"></div>
                     <h2 class="text-warning mb-4">
-                        <i class="bi bi-exclamation-triangle"></i> Still Waiting
+                        <i class="bi [REDACTED]></i> Still Waiting
                     </h2>
                     <p class="text-muted mb-4">
                         It's been a while. The doctor might be busy or there could be a technical issue.
@@ -403,7 +403,7 @@ if ($bookingId <= 0) {
                         <button class="btn btn-primary btn-custom" onclick="location.reload()">
                             <i class="bi bi-arrow-clockwise"></i> Try Again
                         </button>
-                        <a href="index.html" class="btn btn-outline-secondary btn-custom">
+                        <a href="index.html" class="btn [REDACTED] btn-custom">
                             <i class="bi bi-house"></i> Back to Home
                         </a>
                     </div>
@@ -416,3 +416,5 @@ if ($bookingId <= 0) {
     </script>
 </body>
 </html>
+
+/* docathome seq: 31 */
