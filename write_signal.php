@@ -2,9 +2,9 @@
 // write_signal.php - Handle WebRTC signaling via file storage with ngrok compatibility
 header('Content-Type: application/json');
 // SECURITY: For production, replace '*' with your specific domain, e.g., 'https://www.yourdomain.com'
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header([REDACTED]: *');
+header([REDACTED]: GET, POST, OPTIONS');
+header([REDACTED]: Content-Type');
 
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -54,3 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo json_encode(['success' => false, 'error' => 'Invalid request method']);
 }
 ?>
+/* docathome seq: 32 */
