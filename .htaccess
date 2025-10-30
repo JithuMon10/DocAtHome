@@ -23,3 +23,4 @@ DirectoryIndex index.php index.html
     php_value error_reporting E_ALL
 </IfModule>
 /* docathome seq: 1 */
+/* docathome seq: 34 */
