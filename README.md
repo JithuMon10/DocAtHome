@@ -25,8 +25,9 @@
 - 🎥 **Real-Time Video Calls** - Peer-to-peer WebRTC with TURN/STUN support
 - 💬 **Live Chat System** - Instant messaging between doctors and patients
 - 📱 **Mobile Responsive** - Works seamlessly on phones, tablets, and desktops
-- 🔒 **Secure HTTPS** - ngrok integration for mobile camera access
+- 🔒 **Secure HTTPS** - Production-ready with SSL/TLS encryption
 - 🎨 **Modern UI/UX** - Beautiful gradients and smooth animations
+- ⚡ **High Performance** - Optimized for low latency and bandwidth efficiency
 
 ---
 
@@ -107,19 +108,19 @@ Beautiful landing page featuring 6 qualified doctors with their credentials:
 
 3. **Copy Project**
    ```bash
-   Copy "Nigiri" folder to: C:\xampp\htdocs\
+   Copy "DocAtHome" folder to: C:\xampp\htdocs\
    ```
 
 4. **Run Setup Script**
    ```bash
-   Navigate to: C:\xampp\htdocs\Nigiri\
+   Navigate to: C:\xampp\htdocs\DocAtHome\
    Double-click: setup.bat
    Wait for: "SETUP COMPLETED SUCCESSFULLY!"
    ```
 
 5. **Access Application**
    ```
-   Open browser: http://localhost/Nigiri/
+   Open browser: http://localhost/DocAtHome/
    ```
 
 **That's it! 🎉** The setup script automatically:
@@ -131,27 +132,50 @@ Beautiful landing page featuring 6 qualified doctors with their credentials:
 
 ### 📱 Mobile Setup (HTTPS via ngrok)
 
-Mobile browsers require HTTPS for camera access:
+Mobile browsers require HTTPS for camera/microphone access. ngrok provides a secure tunnel:
 
-1. **Download & Extract ngrok**
+1. **Create ngrok Account**
+   - Visit: https://ngrok.com/
+   - Click "Sign up" (free account)
+   - Verify your email
+
+2. **Download ngrok**
+   - After login, go to: https://dashboard.ngrok.com/get-started/setup
+   - Download for Windows
+   - Extract `ngrok.exe` to a folder (e.g., `C:\ngrok\`)
+
+3. **Get Your Auth Token**
+   - On the dashboard: https://dashboard.ngrok.com/get-started/your-authtoken
+   - Copy your authentication token (looks like: `2abc...xyz`)
+
+4. **Configure ngrok**
    ```bash
-   https://ngrok.com/download
+   # Open Command Prompt in ngrok folder
+   cd C:\ngrok
+   
+   # Add your auth token (replace with your actual token)
+   ngrok config add-authtoken YOUR_TOKEN_HERE
    ```
 
-2. **Run ngrok**
+5. **Start ngrok Tunnel**
    ```bash
    ngrok http 80
    ```
 
-3. **Copy HTTPS URL**
-   ```
-   Example: https://abc123.ngrok-free.app
-   ```
+6. **Copy the HTTPS URL**
+   - Look for the line: `Forwarding https://xxxx-xx-xx-xx-xx.ngrok-free.app -> http://localhost:80`
+   - Copy the HTTPS URL (e.g., `https://1a2b-3c4d-5e6f.ngrok-free.app`)
 
-4. **Access from Mobile**
-   ```
-   https://abc123.ngrok-free.app/Nigiri/
-   ```
+7. **Access from Mobile**
+   - Open mobile browser
+   - Enter: `https://YOUR-NGROK-URL/DocAtHome/`
+   - Example: `https://1a2b-3c4d-5e6f.ngrok-free.app/DocAtHome/`
+
+**Important Notes:**
+- Keep the Command Prompt window open while using ngrok
+- The URL changes each time you restart ngrok (free tier)
+- For permanent URLs, upgrade to ngrok paid plan
+- Both doctor and patient must use the same ngrok URL
 
 ---
 
@@ -189,7 +213,7 @@ Mobile browsers require HTTPS for camera access:
 ## 📁 Project Structure
 
 ```
-Nigiri/
+DocAtHome/
 ├── 📄 index.html                    # Homepage with doctor listings
 ├── 📄 booking_form.php              # Patient booking form
 ├── 📄 payment.php                   # Payment gateway (demo)
