@@ -1,0 +1,42 @@
+# Chat and signaling files (runtime generated)
+chats/*.sig
+chats/*.txt
+chats/*.ready
+chats/*.join
+
+# Keep the chats folder but ignore contents
+!chats/.gitkeep
+
+# Database credentials (if you add passwords later)
+# db.php
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Node modules (if you add npm later)
+node_modules/
+
+# Environment files
+.env
+.env.local

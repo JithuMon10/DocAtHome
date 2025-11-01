@@ -1,0 +1,269 @@
+================================================================================
+                    DOCATHOME - INSTALLATION GUIDE
+                   Quick Setup for Your Friends
+================================================================================
+
+REQUIREMENTS:
+-------------
+1. XAMPP (Apache + MySQL + PHP)
+   Download: https://www.apachefriends.org/
+   
+2. Web Browser (Chrome recommended)
+
+3. ngrok (for HTTPS on mobile - optional)
+   Download: https://ngrok.com/download
+
+
+================================================================================
+AUTOMATIC INSTALLATION (RECOMMENDED)
+================================================================================
+
+STEP 1: Install XAMPP
+----------------------
+1. Download XAMPP from https://www.apachefriends.org/
+2. Install to C:\xampp (default location)
+3. Open XAMPP Control Panel
+4. Start Apache
+5. Start MySQL
+
+STEP 2: Copy Project Files
+---------------------------
+1. Copy the entire "Nigiri" folder to C:\xampp\htdocs\
+2. Final path should be: C:\xampp\htdocs\Nigiri\
+
+STEP 3: Run Setup
+-----------------
+1. Navigate to C:\xampp\htdocs\Nigiri\
+2. Double-click: setup.bat
+3. Wait for "SETUP COMPLETED SUCCESSFULLY!" message
+4. Press any key to close
+
+STEP 4: Access Application
+---------------------------
+1. Open browser
+2. Go to: http://localhost/Nigiri/
+3. You should see the DocAtHome homepage!
+
+DONE! ✓
+
+
+================================================================================
+MANUAL INSTALLATION (IF SETUP.BAT FAILS)
+================================================================================
+
+STEP 1: Create Database
+------------------------
+1. Open browser: http://localhost/phpmyadmin
+2. Click "New" in left sidebar
+3. Database name: docathome
+4. Collation: utf8mb4_general_ci
+5. Click "Create"
+
+STEP 2: Import SQL File
+------------------------
+1. Click on "docathome" database in left sidebar
+2. Click "Import" tab at top
+3. Click "Choose File"
+4. Select: C:\xampp\htdocs\Nigiri\docathome_complete.sql
+5. Click "Go" at bottom
+6. Wait for success message
+
+STEP 3: Create Chats Folder
+----------------------------
+1. Open: C:\xampp\htdocs\Nigiri\
+2. Create new folder named: chats
+3. This folder stores video call signaling files
+
+STEP 4: Test
+------------
+1. Open browser: http://localhost/Nigiri/
+2. Click "Book Now"
+3. Fill form and test!
+
+
+================================================================================
+USING WITH MOBILE (NGROK SETUP)
+================================================================================
+
+WHY NGROK?
+----------
+Mobile browsers require HTTPS to access camera/microphone.
+ngrok provides free HTTPS tunnel to your localhost.
+
+SETUP:
+------
+1. Download ngrok: https://ngrok.com/download
+2. Extract ngrok.exe to any folder
+3. Open Command Prompt in that folder
+4. Run: ngrok http 80
+5. You'll see output like:
+   
+   Forwarding: https://abc123.ngrok-free.app -> http://localhost:80
+   
+6. Use the HTTPS URL on your mobile phone!
+7. Example: https://abc123.ngrok-free.app/Nigiri/
+
+IMPORTANT:
+- Keep ngrok running while testing
+- URL changes every time you restart ngrok
+- Free tier is enough for testing
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "Database connection error"
+SOLUTION: 
+- Make sure MySQL is running in XAMPP
+- Run setup.bat again
+- Check db.php has correct credentials (root, no password)
+
+PROBLEM: "Unknown database 'docathome'"
+SOLUTION:
+- Database wasn't created
+- Run setup.bat
+- Or manually create database in phpMyAdmin
+
+PROBLEM: "Unknown column 'status'"
+SOLUTION:
+- Old SQL file imported
+- Run setup.bat (it adds missing column)
+- Or use docathome_complete.sql instead
+
+PROBLEM: "Permission denied" for camera
+SOLUTION:
+- Use HTTPS (ngrok)
+- Check browser permissions
+- Try different browser
+
+PROBLEM: "Connection failed" in video call
+SOLUTION:
+- Both devices must use same ngrok URL
+- Check internet connection
+- Refresh both browsers (Ctrl+F5)
+
+PROBLEM: Video call stuck on "Connecting..."
+SOLUTION:
+- Check browser console (F12) for errors
+- Verify TURN servers are reachable
+- Disable firewall temporarily to test
+
+PROBLEM: Chat messages not appearing
+SOLUTION:
+- Check MySQL is running
+- Verify messages table exists
+- Check browser console for errors
+
+
+================================================================================
+PROJECT STRUCTURE
+================================================================================
+
+Nigiri/
+├── index.html              - Homepage
+├── booking_form.php        - Booking form
+├── payment.php             - Payment page
+├── waiting.php             - Waiting room
+├── video_call.php          - Video call interface
+├── chat.php                - Patient chat
+├── doctor_chat.php         - Doctor chat
+├── doctor_dashboard.php    - Doctor panel
+├── db.php                  - Database connection
+├── docathome.sql           - Original SQL file
+├── docathome_complete.sql  - Complete SQL with all columns
+├── setup.bat               - Automatic setup script
+├── chats/                  - Signaling files (created automatically)
+└── Documentation/
+    ├── PRESENTATION_STORY.txt
+    ├── TECHNICAL_DOCUMENTATION.txt
+    └── TECHNICAL_STORY.txt
+
+
+================================================================================
+DEFAULT CREDENTIALS
+================================================================================
+
+DATABASE:
+- Host: localhost
+- Database: docathome
+- Username: root
+- Password: (empty)
+
+DOCTORS (for demo):
+- Dr. Aarav Mehta
+- Dr. Nisha Reddy
+- Dr. Karan Bhattacharya
+- Dr. Sneha Iyer
+- Dr. Rohan Pillai
+- Dr. Priya Sharma
+
+
+================================================================================
+TESTING THE APPLICATION
+================================================================================
+
+TEST 1: Homepage
+- Open: http://localhost/Nigiri/
+- Should see 6 doctors with "Book Now" buttons
+
+TEST 2: Booking
+- Click any "Book Now"
+- Fill form with test data
+- Select "Video Call"
+- Click Submit
+- Should redirect to payment
+
+TEST 3: Payment
+- Click "Pay Now"
+- Should redirect to waiting room
+
+TEST 4: Doctor Dashboard
+- Open: http://localhost/Nigiri/doctor_dashboard.php
+- Should see your test booking
+- Click "Join Call"
+
+TEST 5: Video Call
+- Open doctor side on laptop
+- Open patient side on phone (via ngrok)
+- Both should see each other's video
+- Test mic mute, camera off, end call buttons
+
+TEST 6: Chat
+- Open: http://localhost/Nigiri/chat.php?booking_id=1
+- Send test message
+- Open: http://localhost/Nigiri/doctor_chat.php?booking_id=1
+- Should see message appear
+
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+✓ Always start Apache and MySQL before testing
+✓ Use ngrok for mobile device testing
+✓ Keep ngrok running during video calls
+✓ Clear browser cache if you see old data (Ctrl+F5)
+✓ Check browser console (F12) for detailed errors
+✓ Video calls work best on same WiFi network
+✓ For production, use proper authentication and security
+
+
+================================================================================
+SUPPORT
+================================================================================
+
+If you encounter issues:
+1. Check TROUBLESHOOTING section above
+2. Verify XAMPP is running (Apache + MySQL)
+3. Check browser console (F12) for errors
+4. Try running setup.bat again
+5. Use docathome_complete.sql for fresh install
+
+
+================================================================================
+                            GOOD LUCK! 🚀
+================================================================================
+
+Your DocAtHome telemedicine platform is ready to use!
+Perfect for college projects and demonstrations.

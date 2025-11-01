@@ -1,0 +1,24 @@
+# Enable PHP processing
+AddType application/x-httpd-php .php
+
+# Set default index files
+DirectoryIndex index.php index.html
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirect to HTTPS if available
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Handle 404 errors
+    ErrorDocument 404 /index.php
+</IfModule>
+
+# PHP settings
+<IfModule mod_php7.c>
+    php_flag display_errors On
+    php_value error_reporting E_ALL
+</IfModule>

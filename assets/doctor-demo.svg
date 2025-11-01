@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#2a52be"/>
+  <text x="320" y="240" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Doctor Video Placeholder</text>
+  <circle cx="320" cy="150" r="50" fill="#ffffff"/>
+  <rect x="295" y="120" width="50" height="10" fill="#2a52be"/>
+  <circle cx="305" cy="140" r="5" fill="#2a52be"/>
+  <circle cx="335" cy="140" r="5" fill="#2a52be"/>
+  <path d="M 300 160 Q 320 180 340 160" stroke="#2a52be" stroke-width="3" fill="none"/>
+  <rect x="270" y="200" width="100" height="150" fill="#ffffff" rx="10"/>
+  <rect x="290" y="220" width="60" height="80" fill="#2a52be" rx="5"/>
+  <rect x="300" y="310" width="40" height="10" fill="#2a52be"/>
+  <rect x="300" y="330" width="40" height="10" fill="#2a52be"/>
+  
+  <!-- Animation -->
+  <circle cx="320" cy="400" r="10" fill="#ff0000">
+    <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+</svg>

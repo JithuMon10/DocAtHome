@@ -1,0 +1,1528 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocAThome - Healthcare at your Fingertips</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <style>
+        :root {
+            --background: 0 0% 100%; /* White */
+            --foreground: 220 13% 13%; /* Dark Gray */
+            --card: 0 0% 100%; /* White */
+            --card-foreground: 220 13% 13%; /* Dark Gray */
+            --primary: 210 90% 50%; /* A slightly richer blue */
+            --primary-foreground: 0 0% 100%; /* White */
+            --secondary: 210 40% 96.1%; /* Light Gray-Blue */
+            --secondary-foreground: 222 47% 11%; /* Dark Blue */
+            --muted: 210 40% 96.1%; /* Light Gray-Blue */
+            --muted-foreground: 215 20% 65%; /* Muted Gray */
+            --accent: 210 40% 98%; /* Very Light Blue */
+            --accent-foreground: 210 90% 50%; /* Primary Blue */
+            --destructive: 0 84% 60%; /* Red */
+            --destructive-foreground: 0 0% 100%; /* White */
+            --border: 214 32% 91%; /* Light Gray Border */
+            --input: 214 32% 91%; /* Light Gray Border */
+            --ring: 210 90% 50%; /* Primary Blue */
+            --radius: 0.75rem;
+            --medical-blue: 205 87% 45%;
+            --medical-blue-light: 205 100% 97%;
+            --medical-blue-dark: 205 87% 35%;
+            --medical-black: 220 13% 13%;
+            --medical-gray: 220 13% 50%;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Base responsive container */
+        .container {
+            width: 100%;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 1200px;
+        }
+        .bg-gradient-to-br { background: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+        .from-medical-blue-light { --tw-gradient-from: hsl(var(--accent)); --tw-gradient-to: hsl(var(--accent) / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-background { --tw-gradient-to: hsl(0 0% 100%); }
+        .bg-medical-blue-light { background-color: hsl(var(--accent)); }
+        .bg-medical-black { background-color: hsl(220 13% 13%); }
+        .text-medical-black { color: hsl(220 13% 13%); }
+        .text-medical-gray { color: hsl(220 13% 50%); }
+        .bg-primary { background-color: hsl(205 87% 45%); }
+        .text-primary { color: hsl(205 87% 45%); }
+        .text-primary-foreground { color: hsl(0 0% 100%); }
+        .bg-background { background-color: hsl(0 0% 100%); }
+        .bg-accent { background-color: hsl(var(--accent)); }
+        .border-border { border-color: hsl(205 20% 90%); }
+        .border-primary { border-color: hsl(205 87% 45%); }
+        .hover\:text-primary:hover { color: hsl(205 87% 45%); }
+        .hover\:border-primary\/20:hover { border-color: hsl(205 87% 45% / 0.2); }
+        .hover\:bg-primary:hover { background-color: hsl(205 87% 45%); }
+        .backdrop-blur-sm { backdrop-filter: blur(4px); }
+        .bg-background\/95 { background-color: hsl(var(--background) / 0.95); }
+        .btn-primary {
+            background-color: hsl(205 87% 45%);
+            color: hsl(0 0% 100%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: hsl(205 87% 35%);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 30px -10px hsl(205 87% 45% / 0.3);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: hsl(205 87% 45%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid hsl(205 87% 45%);
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background-color: hsl(205 87% 45%);
+            color: hsl(0 0% 100%);
+        }
+        .btn-lg {
+            padding: 1.5rem 2rem;
+            font-size: 1.125rem;
+        }
+        .card {
+            background-color: hsl(0 0% 100%);
+            border: 1px solid hsl(205 20% 90%);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            box-shadow: 0 20px 40px -12px hsl(220 13% 13% / 0.15);
+            transform: translateY(-2px);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+        .animate-pulse-subtle { animation: pulse-subtle 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .delay-2000 { animation-delay: 2s; }
+        .delay-4000 { animation-delay: 4s; }
+        .animate-pulse { 
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-1000 { animation-delay: 1s; }
+        
+        /* Cool Hover Effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
+        }
+        
+        /* Enhanced Card Hover */
+        .card:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        /* Button Ripple Effect */
+        .btn-primary, .btn-outline {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:active, .btn-outline:active {
+            animation: shake 0.3s;
+        }
+        
+        /* Smooth Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Easter Egg: Konami Code Animation */
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        .rainbow-mode {
+            animation: rainbow 3s linear infinite;
+        }
+        
+        /* Sparkle Effect */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 400px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .md\:flex { display: flex; }
+            .md\:hidden { display: none; }
+            .md\:text-left { text-align: left; }
+            .md\:flex-row { flex-direction: row; }
+            .md\:mt-0 { margin-top: 0; }
+        }
+        @media (min-width: 640px) {
+            .sm\:inline-flex { display: inline-flex; }
+            .sm\:flex-row { flex-direction: row; }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:text-left { text-align: left; }
+            .lg\:justify-start { justify-content: flex-start; }
+            .lg\:text-6xl { font-size: 3.75rem; line-height: 1; }
+        }
+        
+        /* Clean Modern Background */
+        body {
+            background: #ffffff;
+        }
+        
+        /* Subtle Pattern Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 210, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 210, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Glowing Header */
+        header {
+            box-shadow: 0 4px 30px rgba(0, 210, 255, 0.1);
+            border-bottom: 2px solid rgba(0, 210, 255, 0.1);
+        }
+        
+        /* Enhanced Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 147, 233, 0.1) 0%, rgba(128, 208, 199, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+            animation: rotate-gradient 20s linear infinite;
+        }
+        
+        @keyframes rotate-gradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Glowing Cards */
+        .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 210, 255, 0.3);
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+        
+        /* Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5, #20bf6b, #00d2ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Glowing Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 40px rgba(0, 210, 255, 0.6);
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+            animation: pulse-shape 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-shape {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.6; }
+        }
+        
+        /* Enhanced Doctor Cards */
+        .doctor-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: white;
+            border: 2px solid #e9ecef;
+            overflow: hidden;
+        }
+        
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5, #20bf6b);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .doctor-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 210, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+        
+        .doctor-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover .doctor-avatar {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-online {
+            background: linear-gradient(135deg, #d4f4dd 0%, #e8f8f0 100%);
+            color: #20bf6b;
+        }
+        
+        .status-offline {
+            background: linear-gradient(135deg, #ffe5e5 0%, #fff0f0 100%);
+            color: #ff6b6b;
+        }
+        
+        .doctor-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .doctor-specialty {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
+        /* Feature Icons Animation */
+        .feature-icon {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .card:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.5));
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="logo.png" alt="DocAtHome Logo" style="height: 45px; width: auto; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'">
+                <span class="text-2xl font-bold text-medical-black" style="transition: color 0.3s ease;" onmouseover="this.style.color='hsl(205 87% 45%)'" onmouseout="this.style.color='hsl(220 13% 13%)'">DocAThome</span>
+            </div>
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="text-medical-gray hover:text-primary transition-colors">Services</a>
+                <a href="#features" class="text-medical-gray hover:text-primary transition-colors">Features</a>
+                <a href="#about" class="text-medical-gray hover:text-primary transition-colors">About</a>
+                <a href="#contact" class="text-medical-gray hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <!-- Navigation Menu Toggle for Mobile -->
+            <div class="md:hidden flex items-center space-x-2">
+                <button id="mobileMenuBtn" class="text-medical-gray hover:text-primary transition-colors ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu (Hidden by default) -->
+            <div id="mobileMenu" class="hidden fixed inset-0 bg-background/95 backdrop-blur-sm z-50">
+                <div class="container mx-auto px-4 py-8">
+                    <div class="flex justify-end mb-8">
+                        <button id="closeMenuBtn" class="text-medical-gray hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <nav class="flex flex-col items-center space-y-6 text-xl">
+                        <a href="#services" class="text-medical-gray hover:text-primary transition-colors">Services</a>
+                        <a href="#features" class="text-medical-gray hover:text-primary transition-colors">Features</a>
+                        <a href="#about" class="text-medical-gray hover:text-primary transition-colors">About</a>
+                        <a href="#contact" class="text-medical-gray hover:text-primary transition-colors">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden">
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center lg:text-left space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-medical-black leading-tight">
+                            Healthcare at your 
+                            <span class="gradient-text block">Fingertips</span>
+                        </h1>
+                        <p class="text-xl text-medical-gray leading-relaxed max-w-xl">
+                            Connect with certified doctors 24/7 from the comfort of your home. 
+                            Get instant medical consultations, prescriptions, and health advice.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="booking_form.php" class="btn-primary btn-lg shadow-lg hover:shadow-xl consult-now-btn">
+                            Consult Now
+                        </a>
+                        <a href="#how-it-works" class="btn-outline btn-lg border-2">
+                            Learn More
+                        </a>
+                    </div>
+                    <!-- Quick Stats -->
+                    <div class="flex justify-center lg:justify-start space-x-8 pt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">50K+</div>
+                            <div class="text-sm text-medical-gray">Happy Patients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">500+</div>
+                            <div class="text-sm text-medical-gray">Expert Doctors</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">24/7</div>
+                            <div class="text-sm text-medical-gray">Available</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Content - Illustration -->
+                <div class="relative">
+                    <div class="w-full max-w-lg mx-auto">
+                        <div class="bg-gradient-to-br from-primary to-medical-blue-dark rounded-3xl p-8 shadow-2xl" style="background: linear-gradient(to bottom right, hsl(205 87% 45%), hsl(205 87% 35%));">
+                            <div class="bg-white rounded-2xl p-6 space-y-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                        <span class="text-white text-xl">👨‍⚕️</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Dr. Sarah Johnson</div>
+                                        <div class="text-sm text-medical-gray">Cardiologist</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="bg-medical-blue-light p-3 rounded-lg">
+                                        <div class="text-sm font-medium">Next Available</div>
+                                        <div class="text-lg font-bold text-primary">In 15 minutes</div>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="bg-accent p-2 rounded text-sm flex-1 text-center">Video Call</div>
+                                        <div class="bg-accent p-2 rounded text-sm flex-1 text-center">Chat</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Our Doctors Section -->
+    <section id="our-doctors" class="py-20" style="background: linear-gradient(135deg, #f8f9fa 0%, #e3f8ff 100%); position: relative; overflow: hidden;">
+        <!-- Decorative Elements -->
+        <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(32, 191, 107, 0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+        
+        <div class="container mx-auto px-4" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <div style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #e3f8ff 0%, #d4f1f4 100%); border-radius: 30px; margin-bottom: 1rem; border: 2px solid rgba(0, 210, 255, 0.2);">
+                    <span style="color: #00d2ff; font-weight: 700; font-size: 0.9rem;">👨‍⚕️ MEET OUR EXPERTS</span>
+                </div>
+                <h2 class="text-4xl font-bold text-medical-black mb-4" style="font-size: 3rem;">
+                    Our <span class="gradient-text">Top Doctors</span>
+                </h2>
+                <p class="text-xl text-medical-gray max-w-3xl mx-auto" style="line-height: 1.8;">
+                    Connect with our highly qualified healthcare professionals available 24/7 to provide you with exceptional medical care and personalized treatment.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Doctor 1 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👨‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Aarav Mehta</h3>
+                            <p class="doctor-specialty">MBBS, MD (General Medicine)<br>Consultant Physician & Emergency Care Specialist</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-online">
+                            <span style="width: 8px; height: 8px; background: #20bf6b; border-radius: 50%; display: inline-block;"></span>
+                            Available Now
+                        </span>
+                        <a href="booking_form.php?doctor=dr_gopan" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Doctor 2 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👩‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Nisha Reddy</h3>
+                            <p class="doctor-specialty">MBBS, DNB (Emergency Medicine)<br>Senior Emergency Medicine Consultant</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-offline">
+                            <span style="width: 8px; height: 8px; background: #ff6b6b; border-radius: 50%; display: inline-block;"></span>
+                            Busy
+                        </span>
+                        <a href="booking_form.php?doctor=dr_christy" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Doctor 3 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👨‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Karan Bhattacharya</h3>
+                            <p class="doctor-specialty">MBBS, MD (Internal Medicine)<br>General Physician & Critical Care Expert</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-online">
+                            <span style="width: 8px; height: 8px; background: #20bf6b; border-radius: 50%; display: inline-block;"></span>
+                            Available Now
+                        </span>
+                        <a href="booking_form.php?doctor=dr_reddy" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Doctor 4 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👨‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Sneha Iyer</h3>
+                            <p class="doctor-specialty">MBBS, MD (General Medicine)<br>Consultant – Adult Health & Emergency Response</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-offline">
+                            <span style="width: 8px; height: 8px; background: #ff6b6b; border-radius: 50%; display: inline-block;"></span>
+                            Busy
+                        </span>
+                        <a href="booking_form.php?doctor=dr_stephen" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Doctor 5 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👩‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Rohan Pillai</h3>
+                            <p class="doctor-specialty">MBBS, MD (Emergency Medicine)<br>Emergency and Trauma Care Specialist</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-online">
+                            <span style="width: 8px; height: 8px; background: #20bf6b; border-radius: 50%; display: inline-block;"></span>
+                            Available Now
+                        </span>
+                        <a href="booking_form.php?doctor=dr_sura" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Doctor 6 -->
+                <div class="doctor-card" style="padding: 1.5rem; border-radius: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="doctor-avatar">👨‍⚕️</div>
+                        <div style="flex: 1;">
+                            <h3 class="doctor-name">Dr. Priya Sharma</h3>
+                            <p class="doctor-specialty">MBBS, MD (General Medicine)<br>General Practitioner & Emergency Duty Incharge</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                        <span class="status-badge status-offline">
+                            <span style="width: 8px; height: 8px; background: #ff6b6b; border-radius: 50%; display: inline-block;"></span>
+                            Busy
+                        </span>
+                        <a href="booking_form.php?doctor=dr_sahadevan" class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-medical-black mb-4">
+                    Why Choose DocAThome?
+                </h2>
+                <p class="text-xl text-medical-gray max-w-3xl mx-auto">
+                    Experience healthcare like never before with our comprehensive digital platform
+                    designed to make medical care accessible, convenient, and reliable.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 feature-icon">🩺</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            24/7 Medical Support
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Round-the-clock access to certified healthcare professionals for all your medical needs.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💊</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            Digital Prescriptions
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Get instant digital prescriptions that can be filled at any pharmacy nationwide.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📱</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            Mobile Consultations
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Connect with doctors through video calls, voice calls, or secure messaging.
+                    </p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🔒</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            HIPAA Compliant
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Your health data is protected with bank-level security and privacy measures.
+                    </p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">⚡</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            Quick Appointments
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Get appointments within minutes, no waiting rooms or long queues.
+                    </p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="card group hover:border-primary/20 cursor-pointer">
+                    <div class="text-center pb-4">
+                        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💰</div>
+                        <h3 class="text-xl font-bold text-medical-black group-hover:text-primary transition-colors">
+                            Affordable Pricing
+                        </h3>
+                    </div>
+                    <p class="text-medical-gray text-center leading-relaxed">
+                        Cost-effective healthcare solutions that fit your budget and insurance plans.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="py-20 bg-gradient-to-b from-background to-background-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-medical-dark mb-4">How It Works</h2>
+                <p class="text-medical-gray max-w-2xl mx-auto">Getting the care you need is simple and straightforward with DocAtHome</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="absolute -right-4 -top-4 bg-primary/10 w-24 h-24 rounded-full flex items-center justify-center">
+                        <span class="text-5xl font-bold text-primary/30">1</span>
+                    </div>
+                    <div class="text-primary mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-medical-dark mb-2">Register</h3>
+                    <p class="text-medical-gray">Create your account in minutes. Fill in your details and get instant access to our platform.</p>
+                    <div class="mt-6">
+                        <a href="booking_form.php" class="text-primary font-medium hover:underline flex items-center">
+                            Register Now
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="absolute -right-4 -top-4 bg-primary/10 w-24 h-24 rounded-full flex items-center justify-center">
+                        <span class="text-5xl font-bold text-primary/30">2</span>
+                    </div>
+                    <div class="text-primary mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-medical-dark mb-2">Book</h3>
+                    <p class="text-medical-gray">Choose your preferred consultation type and time slot. Select from our range of specialists.</p>
+                    <div class="mt-6">
+                        <a href="booking_form.php" class="text-primary font-medium hover:underline flex items-center">
+                            Book Appointment
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="absolute -right-4 -top-4 bg-primary/10 w-24 h-24 rounded-full flex items-center justify-center">
+                        <span class="text-5xl font-bold text-primary/30">3</span>
+                    </div>
+                    <div class="text-primary mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-medical-dark mb-2">Chat/Video</h3>
+                    <p class="text-medical-gray">Connect with your doctor through secure chat (₹150) or video call (₹200) for personalized care.</p>
+                    <div class="mt-6">
+                        <a href="doctor_dashboard.php" class="text-primary font-medium hover:underline flex items-center">
+                            Start Consultation
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-medical-black mb-4">
+                    Our Medical Services
+                </h2>
+                <p class="text-xl text-medical-gray max-w-3xl mx-auto">
+                    Choose from our range of professional medical services tailored to meet 
+                    your specific healthcare needs.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Service 1 -->
+                <div class="card border-border">
+                    <div class="text-center pb-4">
+                        <h3 class="text-2xl font-bold text-medical-black">Chat Consultation</h3>
+                        <div class="text-4xl font-bold text-primary mt-2">₹100</div>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-medical-gray text-center">
+                            Comprehensive health assessments and general medical advice via text chat from experienced physicians.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">15-minute consultation</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Medical advice</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Health screening</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Follow-up support</span>
+                            </li>
+                        </ul>
+                        <button class="btn-outline w-full book-now-btn consult-now-btn" data-service="General Consultation">Book Now</button>
+                    </div>
+                </div>
+                <!-- Service 2 - Popular -->
+                <div class="card border-primary border-2 transform scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                            Most Popular
+                        </span>
+                    </div>
+                    <div class="text-center pb-4">
+                        <h3 class="text-2xl font-bold text-medical-black">Video Consultation</h3>
+                        <div class="text-4xl font-bold text-primary mt-2">₹150</div>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-medical-gray text-center">
+                            Connect face-to-face with specialized doctors including cardiologists, dermatologists, and more.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">30-minute consultation</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Specialist expertise</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Detailed diagnosis</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Treatment plan</span>
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-full book-now-btn consult-now-btn" data-service="Specialist Consultation">Book Now</button>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="card border-border">
+                    <div class="text-center pb-4">
+                        <h3 class="text-2xl font-bold text-medical-black">Mental Health Chat</h3>
+                        <div class="text-4xl font-bold text-primary mt-2">₹100</div>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-medical-gray text-center">
+                            Professional mental health services including therapy and counseling sessions via text chat.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">45-minute session</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Licensed therapists</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Confidential support</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                                <span class="text-medical-gray">Ongoing care</span>
+                            </li>
+                        </ul>
+                        <button class="btn-outline w-full book-now-btn consult-now-btn" data-service="Mental Health Support">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); position: relative; overflow: hidden;">
+        <!-- Decorative Background -->
+        <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);"></div>
+        
+        <div class="container mx-auto px-4" style="position: relative; z-index: 1;">
+            <div class="text-center mb-16">
+                <div style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #e3f8ff 0%, #d4f1f4 100%); border-radius: 30px; margin-bottom: 1rem; border: 2px solid rgba(0, 210, 255, 0.2);">
+                    <span style="color: #00d2ff; font-weight: 700; font-size: 0.9rem;">⭐ PATIENT REVIEWS</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-medical-dark mb-4">What Our <span class="gradient-text">Patients Say</span></h2>
+                <p class="text-medical-gray max-w-2xl mx-auto" style="line-height: 1.8;">Real experiences from thousands of satisfied patients who trust DocAtHome for their healthcare needs</p>
+            </div>
+            
+            <!-- Carousel Container -->
+            <div style="position: relative; max-width: 1400px; margin: 0 auto;">
+                <!-- Navigation Buttons -->
+                <button id="prevBtn" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); z-index: 10; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); border: none; color: white; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">
+                    ‹
+                </button>
+                <button id="nextBtn" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); z-index: 10; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); border: none; color: white; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">
+                    ›
+                </button>
+                
+                <!-- Carousel Track -->
+                <div style="overflow: hidden; border-radius: 20px;">
+                    <div id="testimonialTrack" style="display: flex; transition: transform 0.5s ease; gap: 2rem;">
+                        <!-- Review 1 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"DocAtHome has been a lifesaver! I was able to get medical advice quickly without leaving my home. The doctors are professional and caring."</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">R</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Rahul Sharma</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Delhi • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"The video consultation was so convenient. I got expert advice for my skin condition and the prescribed treatment worked perfectly!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #20bf6b 0%, #01a3a4 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">P</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Priya Patel</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Mumbai • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"As a busy professional, DocAtHome has been perfect. The chat consultation was quick and the doctor was very thorough. Highly recommend!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">A</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Arjun Mehta</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Bangalore • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 4 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"Amazing service! Got a prescription for my cold within 15 minutes. The doctor was patient and answered all my questions. Will definitely use again!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">S</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Sneha Reddy</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Hyderabad • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 5 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"Best telemedicine platform I've used. The interface is user-friendly and the doctors are highly qualified. Saved me a trip to the hospital!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">V</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Vikram Singh</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Pune • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 6 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"My elderly mother needed urgent consultation. DocAtHome made it so easy for her. The doctor was compassionate and the service was excellent!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">M</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Meera Krishnan</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Chennai • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 7 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"Fantastic experience! The doctor took time to understand my symptoms and provided detailed advice. The follow-up care was also excellent."</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">K</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Karan Kapoor</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Kolkata • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 8 -->
+                        <div class="testimonial-card" style="min-width: calc(33.333% - 1.5rem); background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); position: relative; border: 2px solid transparent; transition: all 0.3s ease;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                                <span style="color: #fbbf24; font-size: 1.2rem;">★</span>
+                            </div>
+                            <p style="color: #6c757d; margin-bottom: 1.5rem; font-style: italic; line-height: 1.7;">"Impressed with the quality of service! Got my lab reports reviewed and received clear explanations. DocAtHome is a game-changer in healthcare!"</p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #d35400 0%, #e67e22 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">N</div>
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a1a2e; margin-bottom: 2px;">Nisha Gupta</h4>
+                                    <p style="color: #6c757d; font-size: 0.9rem;">Jaipur • Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dots Indicator -->
+                <div id="dotsContainer" style="display: flex; justify-content: center; gap: 10px; margin-top: 2rem;"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-medical-black text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand Section -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">+</span>
+                        </div>
+                        <span class="text-xl font-bold">DocAThome</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Making healthcare accessible, convenient, and reliable for everyone, 
+                        anywhere, anytime.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                            <span class="text-sm">f</span>
+                        </div>
+                        <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                            <span class="text-sm">t</span>
+                        </div>
+                        <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                            <span class="text-sm">in</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Services -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">General Consultation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Specialist Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Mental Health</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Emergency Support</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">📞 1-800-DOC-HOME</li>
+                        <li class="text-gray-400">📧 support@docathome.com</li>
+                        <li class="text-gray-400">🕒 24/7 Available</li>
+                        <li class="text-gray-400">🌍 Worldwide Service</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Section -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 DocAThome. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('closeMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking menu items
+        document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Attach event listeners to all Book Now buttons
+        document.querySelectorAll('.book-now-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // All "Book Now" buttons now lead to the main booking form
+                window.location.href = 'booking_form.php';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.card, .btn-primary, .btn-outline');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('scroll-reveal', 'active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (konamiCode.join('') === konamiSequence.join('')) {
+                document.body.classList.toggle('rainbow-mode');
+                
+                // Create sparkle effect
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.style.position = 'fixed';
+                        sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                        sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                        sparkle.style.width = '10px';
+                        sparkle.style.height = '10px';
+                        sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                        sparkle.style.borderRadius = '50%';
+                        sparkle.style.pointerEvents = 'none';
+                        sparkle.style.animation = 'sparkle 1s ease-out';
+                        sparkle.style.zIndex = '9999';
+                        document.body.appendChild(sparkle);
+                        
+                        setTimeout(() => sparkle.remove(), 1000);
+                    }, i * 50);
+                }
+                
+                alert('🎉 Konami Code Activated! Rainbow Mode Enabled!');
+            }
+        });
+        
+        // Double-click logo for surprise
+        let logoClickCount = 0;
+        document.querySelector('img[alt="DocAtHome Logo"]').addEventListener('click', function() {
+            logoClickCount++;
+            this.style.transform = 'scale(1.2) rotate(360deg)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            }, 500);
+            
+            if (logoClickCount === 5) {
+                alert('🎊 You found the secret! You clicked the logo 5 times!');
+                logoClickCount = 0;
+            }
+        });
+        
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn-primary, .btn-outline').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+        
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            .testimonial-card {
+                border-radius: 20px !important;
+                animation: fadeInScale 0.6s ease-out;
+            }
+            .testimonial-card:hover {
+                border-color: rgba(0, 210, 255, 0.4) !important;
+                box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2) !important;
+                transform: translateY(-8px) scale(1.02);
+            }
+            #prevBtn:hover, #nextBtn:hover {
+                transform: translateY(-50%) scale(1.15);
+                box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+            }
+            #prevBtn:active, #nextBtn:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            @keyframes slideInFromLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            .testimonial-card h4 {
+                transition: color 0.3s ease;
+            }
+            .testimonial-card:hover h4 {
+                color: #00d2ff !important;
+            }
+            .testimonial-card > div:first-child {
+                animation: pulse 2s ease-in-out infinite;
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.8; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Testimonial Carousel
+        const track = document.getElementById('testimonialTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('dotsContainer');
+        
+        if (track && prevBtn && nextBtn && dotsContainer) {
+            const cards = track.querySelectorAll('.testimonial-card');
+            const totalCards = cards.length;
+            const cardsPerView = 3;
+            const totalSlides = totalCards - cardsPerView + 1;
+            let currentIndex = 0;
+            let autoScrollInterval;
+            
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.style.width = '12px';
+                dot.style.height = '12px';
+                dot.style.borderRadius = '50%';
+                dot.style.background = i === 0 ? 'linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%)' : '#d1d5db';
+                dot.style.cursor = 'pointer';
+                dot.style.transition = 'all 0.3s ease';
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            
+            function updateDots() {
+                const dots = dotsContainer.children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].style.background = i === currentIndex ? 'linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%)' : '#d1d5db';
+                    dots[i].style.transform = i === currentIndex ? 'scale(1.2)' : 'scale(1)';
+                }
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 32; // 2rem gap
+                const offset = -(currentIndex * (cardWidth + gap));
+                track.style.transform = `translateX(${offset}px)`;
+                updateDots();
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                goToSlide(currentIndex);
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                goToSlide(currentIndex);
+            }
+            
+            // Auto scroll every 4 seconds
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(nextSlide, 4000);
+            }
+            
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoScroll();
+                startAutoScroll();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoScroll();
+                startAutoScroll();
+            });
+            
+            // Pause on hover
+            track.addEventListener('mouseenter', stopAutoScroll);
+            track.addEventListener('mouseleave', startAutoScroll);
+            
+            // Start auto scroll
+            startAutoScroll();
+            
+            // Add entrance animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.style.animation = `slideInFromLeft 0.6s ease-out forwards`;
+                            }, index * 100);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(track);
+        }
+    </script>
+</body>
+</html>
