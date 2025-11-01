@@ -20,6 +20,14 @@
 
 **DocAtHome** is a comprehensive telemedicine platform enabling patients to consult with doctors remotely through **real-time video calls** and **instant messaging**. Built with WebRTC technology, it provides secure, high-quality video consultations without requiring any third-party plugins.
 
+### 👨‍💻 Developer
+**Jithendra V Anand**
+
+### 📅 Project Timeline
+- **Development Duration:** 1 week
+- **Completion Date:** October 31, 2025
+- **Technologies Mastered:** WebRTC, TURN/STUN protocols, Real-time communication, PHP/MySQL
+
 ### 🎯 Project Highlights
 
 - 🎥 **Real-Time Video Calls** - Peer-to-peer WebRTC with TURN/STUN support
@@ -477,7 +485,7 @@ This project is licensed under the MIT License - see below for details:
 ```
 MIT License
 
-Copyright (c) 2025 DocAtHome
+Copyright (c) 2025 Jithendra V Anand
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
