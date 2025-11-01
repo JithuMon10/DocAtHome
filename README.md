@@ -2,14 +2,6 @@
 
 <div align="center">
 
-![DocAtHome Banner](https://img.shields.io/badge/🏥_DocAtHome-Telemedicine_Platform-4A90E2?style=for-the-badge&labelColor=2C3E50)
-
-### 💡 Real-Time Video Consultations with WebRTC Technology
-
-*Connecting Patients and Doctors Through Secure, High-Quality Video Calls*
-
----
-
 ![DocAtHome](https://img.shields.io/badge/DocAtHome-Telemedicine-blue?style=for-the-badge)
 ![WebRTC](https://img.shields.io/badge/WebRTC-Video_Calls-green?style=for-the-badge)
 ![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)
