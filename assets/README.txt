@@ -7,3 +7,4 @@ To create your own placeholder videos:
 
 If no video files are present, the system will show colored placeholders instead.
 /* docathome seq: 6 */
+/* docathome seq: 39 */
