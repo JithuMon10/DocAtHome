@@ -1,14 +1,17 @@
 <div align="center">
 
-# 📱 JPS Studio
-### Jithu Printer Service Manager
+# 🏥 DocAtHome
+### Telemedicine & Real-Time Video Consultation Platform
 
-**A modern, offline-first Android application designed to streamline printing order management.**
+**Connecting Patients and Doctors through secure, high-quality video calls.**
 
-![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-purple?style=for-the-badge&logo=kotlin)
-![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-UI-4285F4?style=for-the-badge&logo=android)
-![Platform](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android)
-![License](https://img.shields.io/badge/License-Personal-orange?style=for-the-badge)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![WebRTC](https://img.shields.io/badge/WebRTC-RealTime-333333?style=for-the-badge&logo=webrtc)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+[View Demo](#-demo) • [Key Features](#-features) • [Installation](#-quick-start) • [Architecture](#-how-it-works)
 
 </div>
 
@@ -16,88 +19,114 @@
 
 ## 📖 Overview
 
-**JPS Studio** is a single-user productivity tool built for small printing businesses, freelance printing services, and college print shops. It replaces manual logbooks with a sleek, digital dashboard to track orders, payments, and completion statuses.
+**DocAtHome** is a comprehensive telemedicine platform that enables **remote medical consultations** via HD video and instant chat. Built from scratch using **PHP** and **WebRTC**, it offers a production-ready environment with secure signaling, TURN/STUN server support for NAT traversal, and a responsive UI.
 
-Built entirely with **Kotlin** and **Jetpack Compose**, the app focuses on a clean UI, smooth animations, and secure local data handling.
+### 🎯 Project Highlights
+* **Zero Plugins:** Pure browser-based video calls using WebRTC.
+* **Reliability:** Implements 17 different TURN/STUN server configurations for 99.9% connectivity.
+* **Security:** End-to-End encryption for media streams (SRTP/DTLS).
+* **Speed:** Lightweight file-based signaling for instant peer discovery.
+
+---
+
+## 📸 Interface Gallery
+
+| **Landing Page** | **Doctor Dashboard** |
+|:---:|:---:|
+| <img src="assets/landing.png" alt="Landing Page" width="400"/> | <img src="assets/dashboard.png" alt="Dashboard" width="400"/> |
+| **HD Video Interface** | **Real-Time Chat** |
+| <img src="assets/videocall.png" alt="Video Call" width="400"/> | <img src="assets/chat.png" alt="Chat" width="400"/> |
 
 ---
 
 ## ✨ Key Features
 
-### 📋 Order Management
-- **Smart Entry:** Add new printing orders with comprehensive details.
-- **Auto-Timestamp:** Automatically records the order creation date & time.
-- **Due Dates:** Built-in calendar picker for setting deadlines.
+### 🏥 For Patients
+* **Easy Booking:** Streamlined appointment form with (demo) payment gateway.
+* **Virtual Waiting Room:** Auto-redirects when the doctor joins.
+* **HD Video:** Crystal clear audio/video with mute and camera controls.
+* **Mobile Ready:** Works perfectly on smartphones via ngrok/HTTPS.
 
-### 🧠 Intelligent Status Tracking
-The app uses a smart visual system to track the lifecycle of an order:
-- 🔴 **Pending:** Order received, work not started.
-- 🟡 **Amount Received:** Payment made, work pending.
-- 🟠 **Unpaid Completed:** Work done, payment pending.
-- 🟢 **Fully Completed:** Work done and payment settled.
+### 👨‍⚕️ For Doctors
+* **Live Dashboard:** View incoming patient requests in real-time.
+* **Patient History:** Access booking details and medical notes.
+* **Control Center:** Manage calls, screen sharing, and patient status.
 
-### ⚙️ Productivity & UX
-- **Auto-Sorting:** Newest orders appear at the top; completed orders move to the bottom.
-- **Smart Search:** Compact, icon-based search to find orders instantly.
-- **Theme Persistence:** Remembers your preference for **Light** or **Dark** mode.
-- **Offline First:** No internet required; runs safely in the background.
-
-### 🔐 Security
-- **PIN Protection:** Dashboard is secured via a **6-digit PIN**.
-- **Local Privacy:** All data is stored locally on the device. No cloud sync, no third-party access.
+### ⚙️ Technical Core
+* **Smart Network Handling:** Uses ICE (Interactive Connectivity Establishment) to find the best path (P2P vs Relay).
+* **Secure Tunneling:** Full HTTPS support for camera permissions.
+* **Adaptive Bitrate:** Adjusts quality based on bandwidth.
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Language:** [Kotlin](https://kotlinlang.org/)
-* **UI Framework:** [Jetpack Compose](https://developer.android.com/jetpack/compose) (Material Design 3)
-* **Architecture:** MVVM / Single-User Local Storage
-* **Navigation:** Jetpack Navigation Compose
-* **Data Persistence:** Local Storage (Room/DataStore)
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3, JavaScript (ES6+), Bootstrap 5.3 |
+| **Backend** | PHP 8.x, Apache 2.4 |
+| **Database** | MySQL 8.x (Relational) |
+| **Real-Time** | WebRTC (RTCPeerConnection), SDP, ICE Candidates |
+| **Infrastructure** | XAMPP, ngrok (Tunneling), Google STUN, Metered.ca TURN |
 
 ---
 
-## 🎨 UI Highlights
+## 🚀 Quick Start
 
-* **Gradient Cards:** Visually distinct order cards for better readability.
-* **Compact Top Bar:** Minimalist design with centered app branding.
-* **Visual Feedback:** Color-coded states for instant status recognition.
-* **Animations:** Smooth transitions and floating action button effects.
+### Prerequisites
+* [XAMPP](https://www.apachefriends.org/) (Apache + MySQL + PHP)
+* [ngrok](https://ngrok.com/) (Optional, for mobile testing)
+* Chrome Browser (Recommended)
 
----
+### ⚡ Automatic Installation (Windows)
 
-## 📌 Use Cases
+1.  **Clone/Copy** the project folder to `C:\xampp\htdocs\DocAtHome`.
+2.  **Start XAMPP:** Ensure Apache and MySQL are running.
+3.  **Run the Script:**
+    Double-click `setup.bat` inside the folder.
+    > *This script creates the database, imports tables, and sets up permissions automatically.*
+4.  **Launch:**
+    Open your browser and visit: `http://localhost/DocAtHome/`
 
-This project is ideal for:
-1.  **College Printing Shops:** Managing student project prints.
-2.  **Freelancers:** Tracking client orders and payments.
-3.  **Personal Business:** A digital replacement for paper logbooks.
+### 📱 Mobile Access (via ngrok)
+*Mobile browsers require HTTPS for camera access.*
 
----
-
-## 👤 Developer
-
-**Jithu (Jithendra V Anand)**
-*Creator of JPS Studio*
-
-> "Building efficient tools for everyday problems."
-
----
-
-## 📄 License & Usage
-
-**Current Status:** Personal & Educational Use Only.
-
-This project is open for viewing for educational purposes. Commercial use, redistribution, or modification of the source code requires explicit permission from the author.
+1.  Install **ngrok** and authenticate.
+2.  Start the tunnel:
+    ```bash
+    ngrok http 80
+    ```
+3.  Copy the secure link (e.g., `https://1a2b-3c4d.ngrok-free.app`).
+4.  Open this link on both the **Desktop (Doctor)** and **Mobile (Patient)**.
 
 ---
 
-## ⭐ Support
+## 🎓 How It Works
 
-If you find this project interesting or useful:
-* ⭐ **Star this repository** to show your support!
-* 🐞 **Report Bugs** via the Issues tab.
-* 🛠 **Suggest Improvements** to help make JPS Studio better.
+### The Signaling Flow (Under the Hood)
 
-**Thank you for visiting JPS Studio! 🚀**
+1.  **The Trigger:** Doctor clicks "Join Call," generating a `.join` signal file.
+2.  **The Offer:** Doctor's browser creates an **SDP Offer** (media capabilities) and saves it.
+3.  **The Answer:** Patient's browser detects the offer, accepts it, and creates an **SDP Answer**.
+4.  **The Path (ICE):** Both browsers swap **ICE Candidates** (network paths) to find a way to connect.
+    * *Direct:* If on the same LAN (Local IP).
+    * *STUN:* If behind a simple NAT (Public IP).
+    * *TURN:* If behind a strict firewall (Relay Server).
+5.  **Connection:** Secure video stream is established peer-to-peer!
+
+---
+
+## 📁 Project Structure
+
+```text
+DocAtHome/
+├── 📄 index.html            # Landing Page
+├── 📄 video_call.php        # The WebRTC Logic Core
+├── 📄 doctor_dashboard.php  # Doctor's Control Panel
+├── 📂 chats/                # Temp storage for Signaling Files
+├── 📂 Backend Scripts/      # PHP API Logic
+│   ├── write_signal.php     # Saves SDP/ICE data
+│   ├── read_signal.php      # Retrieves SDP/ICE data
+│   └── db.php               # Database Config
+├── 📂 Database/             # SQL Import Files
+└── 📂 Setup & Installation/ # setup.bat and guides
