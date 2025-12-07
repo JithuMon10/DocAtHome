@@ -22,15 +22,6 @@ Built entirely with **Kotlin** and **Jetpack Compose**, the app focuses on a cle
 
 ---
 
-## 📸 Screenshots
-
-| Dashboard (Light) | Order Details | Dark Mode | Order Status |
-|:---:|:---:|:---:|:---:|
-| ![Dashboard] | ![Details] | ![Dark Mode] | ![Status] |
-| *(Add Image)* | *(Add Image)* | *(Add Image)* | *(Add Image)* |
-
----
-
 ## ✨ Key Features
 
 ### 📋 Order Management
